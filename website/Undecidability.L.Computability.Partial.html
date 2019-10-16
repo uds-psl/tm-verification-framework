@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<link href="coqdocjs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="coqdocjs.js"></script>
+</head>
+
+<body onload="document.getElementById('content').focus()">
+  <div id="header">
+    <span class="left">
+      <span class="modulename"> <script> document.write(document.title) </script> </span>
+    </span>
+
+    <span class="button" id="toggle-proofs"></span>
+
+    <span class="right">
+      <a href="../">Project Page</a>
+      <a href="./indexpage.html"> Index </a>
+      <a href="./toc.html"> Table of Contents </a>
+    </span>
+</div>
+    <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+    <div id="main">
+<div class="code">
+<span class="comment">(*<br/>
+Require&nbsp;Export&nbsp;LNat&nbsp;LOptions&nbsp;LTactics.<br/>
+<br/>
+Section&nbsp;PartialFunctions.<br/>
+<br/>
+Variable&nbsp;F&nbsp;:&nbsp;term.<br/>
+Hypothesis&nbsp;proc_F&nbsp;:&nbsp;proc&nbsp;F.<br/>
+<br/>
+Variable&nbsp;X&nbsp;:&nbsp;Type.<br/>
+Variable&nbsp;in_enc&nbsp;:&nbsp;X&nbsp;-&gt;&nbsp;term.<br/>
+<br/>
+Variable&nbsp;Y&nbsp;:&nbsp;Type.<br/>
+Variable&nbsp;out_enc&nbsp;:&nbsp;Y&nbsp;-&gt;&nbsp;term.<br/>
+<br/>
+Hypothesis&nbsp;in_enc_proc&nbsp;:&nbsp;forall&nbsp;x,&nbsp;proc&nbsp;(in_enc&nbsp;x).<br/>
+Hypothesis&nbsp;out_enc_proc&nbsp;:&nbsp;forall&nbsp;x,&nbsp;proc&nbsp;(out_enc&nbsp;x).<br/>
+<br/>
+Hint&nbsp;Resolve&nbsp;in_enc_proc&nbsp;out_enc_proc:&nbsp;LProc.<br/>
+<br/>
+Hypothesis&nbsp;total_F&nbsp;:&nbsp;forall&nbsp;t&nbsp;n,&nbsp;(exists&nbsp;v,&nbsp;F&nbsp;(enc&nbsp;n)&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;oenc&nbsp;out_enc&nbsp;(Some&nbsp;v))&nbsp;\/&nbsp;F&nbsp;(enc&nbsp;n)&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;(none&nbsp;out_enc).<br/>
+<br/>
+Definition&nbsp;S'&nbsp;:=&nbsp;rho&nbsp;(.\"S'",&nbsp;"n",&nbsp;"F",&nbsp;"t";&nbsp;("F"&nbsp;"n"&nbsp;"t")<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!K<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((.\"Sn","x";&nbsp;"S'"&nbsp;"Sn"&nbsp;"F"&nbsp;"x")&nbsp;(!Succ&nbsp;"n"))&nbsp;"t").<br/>
+<br/>
+Lemma&nbsp;S'_proc&nbsp;:&nbsp;recProc&nbsp;S'.<br/>
+&nbsp;&nbsp;cLproc.<br/>
+Qed.<br/>
+<br/>
+Hint&nbsp;Resolve&nbsp;S'_proc&nbsp;:&nbsp;LProc.<br/>
+<br/>
+Hint&nbsp;Unfold&nbsp;S'&nbsp;:&nbsp;cbv.<br/>
+<span class="comment">(*<br/>
+Lemma&nbsp;S'_rec&nbsp;n&nbsp;t&nbsp;:&nbsp;S'&nbsp;(enc&nbsp;n)&nbsp;F&nbsp;(tenc&nbsp;t)&nbsp;==&nbsp;&nbsp;(F&nbsp;(enc&nbsp;n)&nbsp;(tenc&nbsp;t))&nbsp;K&nbsp;(lam&nbsp;(&nbsp;S'&nbsp;(Succ&nbsp;(enc&nbsp;n))&nbsp;F&nbsp;(tenc&nbsp;t)))&nbsp;I.<br/>
+Proof.<br/>
+&nbsp;&nbsp;Lsimpl.<br/>
+Qed.*)</span><br/>
+<br/>
+<br/>
+Hypothesis&nbsp;mono_F&nbsp;:&nbsp;forall&nbsp;n&nbsp;t&nbsp;v,&nbsp;F&nbsp;(enc&nbsp;n)&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;oenc&nbsp;out_enc&nbsp;(Some&nbsp;v)&nbsp;-&gt;&nbsp;F&nbsp;(enc&nbsp;(S&nbsp;n))&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;oenc&nbsp;out_enc&nbsp;(Some&nbsp;v).<br/>
+<br/>
+Lemma&nbsp;S'_n_Sn&nbsp;n&nbsp;t&nbsp;:&nbsp;S'&nbsp;(enc&nbsp;n)&nbsp;F&nbsp;(in_enc&nbsp;t)&nbsp;&nbsp;==&nbsp;S'&nbsp;(enc&nbsp;(S&nbsp;n))&nbsp;F&nbsp;(in_enc&nbsp;t).<br/>
+Proof.<br/>
+&nbsp;&nbsp;repeat&nbsp;recStep&nbsp;S'.&nbsp;destruct&nbsp;(@total_F&nbsp;t&nbsp;n)&nbsp;as&nbsp;<span class="inlinecode">[<span class="id" title="var">v</span></span> <span class="inlinecode"><span class="id" title="var">Hv</span>]</span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">H</span></span>.<br/>
+&nbsp;&nbsp;-assert&nbsp;(H&nbsp;:=&nbsp;mono_F&nbsp;Hv).&nbsp;Lsimpl.&nbsp;<br/>
+&nbsp;&nbsp;-Lsimpl.&nbsp;rewrite&nbsp;none_correct&nbsp;with&nbsp;(enc:=in_enc).&nbsp;Lsimpl.&nbsp;recStep&nbsp;S'.&nbsp;Lsimpl.&nbsp;<br/>
+Qed.<br/>
+<br/>
+Lemma&nbsp;S'_n_Sn_none&nbsp;n&nbsp;t&nbsp;:&nbsp;F&nbsp;(enc&nbsp;n)&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;oenc&nbsp;out_enc&nbsp;None&nbsp;-&gt;(&nbsp;lam&nbsp;(S'&nbsp;(enc&nbsp;n)&nbsp;F&nbsp;0))&nbsp;(in_enc&nbsp;t)&nbsp;&nbsp;&gt;*&nbsp;(lam&nbsp;(S'&nbsp;(enc&nbsp;(S&nbsp;n))&nbsp;F&nbsp;0)&nbsp;)(in_enc&nbsp;t).<br/>
+Proof.<br/>
+&nbsp;&nbsp;intros&nbsp;R.&nbsp;wLsimpl.&nbsp;subst.&nbsp;recStep&nbsp;S'.&nbsp;wLsimpl.&nbsp;subst.&nbsp;&nbsp;apply&nbsp;star_step_app_proper;<span class="inlinecode">|<span class="id" title="tactic">reflexivity</span></span>.&nbsp;apply&nbsp;equiv_lambda.&nbsp;Lsimpl.<br/>
+Qed.<br/>
+<br/>
+Definition&nbsp;Se&nbsp;F&nbsp;:term&nbsp;:=&nbsp;.\"x";&nbsp;!(S'&nbsp;(enc&nbsp;0))&nbsp;!F&nbsp;"x".<br/>
+<br/>
+Lemma&nbsp;Se_proc&nbsp;:&nbsp;proc&nbsp;(Se&nbsp;F).<br/>
+&nbsp;&nbsp;unfold&nbsp;Se;simpl.&nbsp;wLproc.<br/>
+Qed.<br/>
+<br/>
+Hint&nbsp;Resolve&nbsp;Se_proc&nbsp;:&nbsp;LProc.<br/>
+<br/>
+Lemma&nbsp;S'_0_n&nbsp;n&nbsp;t&nbsp;:&nbsp;Se&nbsp;F&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;S'&nbsp;(enc&nbsp;n)&nbsp;F&nbsp;(in_enc&nbsp;t).<br/>
+Proof.<br/>
+&nbsp;&nbsp;unfold&nbsp;Se;simpl.&nbsp;Lsimpl.&nbsp;induction&nbsp;n.&nbsp;<br/>
+&nbsp;&nbsp;-Lsimpl.<br/>
+&nbsp;&nbsp;-Lsimpl.&nbsp;apply&nbsp;S'_n_Sn.<br/>
+Qed.<br/>
+<br/>
+Lemma&nbsp;Se_converges&nbsp;t&nbsp;v&nbsp;:&nbsp;Se&nbsp;F&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;lam&nbsp;v&nbsp;-&gt;&nbsp;closed&nbsp;(lam&nbsp;v).<br/>
+Proof.<br/>
+&nbsp;&nbsp;intros&nbsp;eq.&nbsp;apply&nbsp;equiv_lambda'&nbsp;in&nbsp;eq;<span class="inlinecode">|<span class="id" title="var">Lproc</span></span>.&nbsp;apply&nbsp;closed_star&nbsp;in&nbsp;eq;Lproc.<br/>
+Qed.<br/>
+<br/>
+Lemma&nbsp;Se_correct'&nbsp;t&nbsp;(v&nbsp;:&nbsp;term)&nbsp;:&nbsp;proc&nbsp;v&nbsp;-&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;Se&nbsp;F&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;v&nbsp;&lt;-&gt;&nbsp;exists&nbsp;n,&nbsp;F&nbsp;(enc&nbsp;n)&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;some&nbsp;v&nbsp;).<br/>
+Proof.<br/>
+&nbsp;&nbsp;intros&nbsp;proc_v;&nbsp;split...<br/>
+&nbsp;&nbsp;-&nbsp;unfold&nbsp;Se;simpl;&nbsp;generalize&nbsp;0&nbsp;at&nbsp;1;&nbsp;intros&nbsp;n&nbsp;H.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;eapply&nbsp;equiv_lambda'&nbsp;in&nbsp;H;Lproc...&nbsp;assert&nbsp;(R:=H).&nbsp;rewrite&nbsp;star_pow&nbsp;in&nbsp;H.&nbsp;destruct&nbsp;H&nbsp;as&nbsp;<span class="inlinecode"><span class="id" title="var">k</span></span> <span class="inlinecode"><span class="id" title="var">H</span></span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;revert&nbsp;n&nbsp;R&nbsp;H.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;eapply&nbsp;complete_induction&nbsp;with&nbsp;(x&nbsp;:=&nbsp;k).&nbsp;clear&nbsp;k.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;intros&nbsp;k&nbsp;IHn&nbsp;n&nbsp;R&nbsp;H.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;destruct&nbsp;(total_F&nbsp;t&nbsp;n)&nbsp;as&nbsp;<span class="inlinecode">[<span class="id" title="var">v'</span></span> <span class="inlinecode"><span class="id" title="var">H'</span>]</span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">HH</span></span>...<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;assert&nbsp;(out_enc&nbsp;v'&nbsp;=&nbsp;v).&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply&nbsp;unique_normal_forms;Lproc.&nbsp;rewrite&nbsp;&lt;-&nbsp;R.&nbsp;Lsimpl.&nbsp;recStep&nbsp;S'.&nbsp;Lsimpl.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subst.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exists&nbsp;n.&nbsp;Lsimpl.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;assert&nbsp;(R':=&nbsp;S'_n_Sn_none&nbsp;HH).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply&nbsp;star_pow&nbsp;in&nbsp;R'&nbsp;as&nbsp;<span class="inlinecode"><span class="id" title="var">k'</span></span> <span class="inlinecode"><span class="id" title="var">R'</span></span>.&nbsp;destruct&nbsp;k'.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*inversion&nbsp;R'.&nbsp;apply&nbsp;enc_injective&nbsp;in&nbsp;H1.&nbsp;omega.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*destruct&nbsp;proc_v&nbsp;as&nbsp;<span class="inlinecode">?</span> <span class="inlinecode">[?</span> <span class="inlinecode">?]</span>.&nbsp;subst&nbsp;v.&nbsp;destruct&nbsp;(pow_trans_lam&nbsp;H&nbsp;R')&nbsp;as&nbsp;<span class="inlinecode"><span class="id" title="var">k''</span></span> <span class="inlinecode">[<span class="id" title="var">le</span></span> <span class="inlinecode"><span class="id" title="var">R''</span>]</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assert&nbsp;(R1&nbsp;:&nbsp;(λ&nbsp;((S'&nbsp;(enc&nbsp;(S&nbsp;n)))&nbsp;F)&nbsp;0)&nbsp;(in_enc&nbsp;t)&nbsp;&gt;*&nbsp;(λ&nbsp;x))&nbsp;by&nbsp;(rewrite&nbsp;star_pow;&nbsp;eauto).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specialize&nbsp;(IHn&nbsp;_&nbsp;le&nbsp;_&nbsp;R1&nbsp;R'').&nbsp;auto.<br/>
+&nbsp;&nbsp;-&nbsp;intros&nbsp;<span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode"><span class="id" title="var">Hm</span></span>.&nbsp;rewrite&nbsp;S'_0_n&nbsp;with&nbsp;(n&nbsp;:=&nbsp;m).&nbsp;recStep&nbsp;S'.&nbsp;Lsimpl.&nbsp;unfold&nbsp;some.&nbsp;simpl.&nbsp;Lsimpl.<br/>
+Qed.<br/>
+<br/>
+<span class="comment">(*&nbsp;TODO&nbsp;*)</span><br/>
+<br/>
+Ltac&nbsp;standardizeHypo&nbsp;_n:=<br/>
+match&nbsp;goal&nbsp;with<br/>
+&nbsp;&nbsp;|&nbsp;eq&nbsp;:&nbsp;?s&nbsp;==&nbsp;?t&nbsp;|-&nbsp;_=&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;revert&nbsp;eq;try&nbsp;standardizeHypo&nbsp;_n;&nbsp;intros&nbsp;eq;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;(progress&nbsp;(let&nbsp;R:=&nbsp;fresh&nbsp;"R"&nbsp;in<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standardize&nbsp;R&nbsp;_n&nbsp;s;apply&nbsp;(stHypo&nbsp;R)&nbsp;in&nbsp;eq;clear&nbsp;R&nbsp;));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;(progress&nbsp;(let&nbsp;R':=&nbsp;fresh&nbsp;"R'"&nbsp;in<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symmetry;standardize&nbsp;R'&nbsp;_n&nbsp;s;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply&nbsp;(stHypo&nbsp;R')&nbsp;in&nbsp;eq;symmetry;clear&nbsp;R'&nbsp;))<br/>
+end.<br/>
+<br/>
+Corollary&nbsp;Se_correct&nbsp;t&nbsp;(v&nbsp;:&nbsp;term)&nbsp;:&nbsp;lambda&nbsp;v&nbsp;-&gt;&nbsp;(Se&nbsp;F&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;v&nbsp;&lt;-&gt;&nbsp;exists&nbsp;n,&nbsp;F&nbsp;(enc&nbsp;n)&nbsp;(in_enc&nbsp;t)&nbsp;==&nbsp;some&nbsp;v).<br/>
+Proof.<br/>
+&nbsp;&nbsp;intros&nbsp;lam_v;&nbsp;split.<br/>
+&nbsp;&nbsp;-&nbsp;intros.&nbsp;destruct&nbsp;lam_v;&nbsp;subst.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;eapply&nbsp;Se_correct'&nbsp;in&nbsp;H.&nbsp;firstorder.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;eapply&nbsp;Se_converges&nbsp;in&nbsp;H.&nbsp;split;auto.<br/>
+&nbsp;&nbsp;-&nbsp;intros&nbsp;<span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode"><span class="id" title="var">H</span></span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;assert&nbsp;(closed&nbsp;v).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;destruct&nbsp;(total_F&nbsp;t&nbsp;n)&nbsp;as&nbsp;<span class="inlinecode">[<span class="id" title="var">v'</span></span> <span class="inlinecode"><span class="id" title="var">Hv'</span>]</span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">Hv'</span></span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rewrite&nbsp;H&nbsp;in&nbsp;Hv'.&nbsp;Lsimpl.&nbsp;cbv&nbsp;in&nbsp;Hv'.&nbsp;inv&nbsp;lam_v.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clear&nbsp;H.&nbsp;revert&nbsp;Hv'.&nbsp;try&nbsp;standardizeHypo&nbsp;10.&nbsp;intros&nbsp;Hv'.&nbsp;rewrite&nbsp;!(eqStep&nbsp;(stepApp&nbsp;_&nbsp;_))&nbsp;in&nbsp;Hv'.&nbsp;cbv&nbsp;in&nbsp;Hv'.&nbsp;apply&nbsp;unique_normal_forms&nbsp;in&nbsp;Hv';<span class="inlinecode">|<span class="id" title="var">Lproc</span>..</span>.&nbsp;rewrite&nbsp;oenc_def_eq&nbsp;in&nbsp;Hv'.&nbsp;injection&nbsp;Hv'.&nbsp;intros;subst.&nbsp;rewrite&nbsp;H.&nbsp;Lproc.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rewrite&nbsp;H&nbsp;in&nbsp;Hv'.&nbsp;symmetry&nbsp;in&nbsp;Hv'.&nbsp;cbv&nbsp;in&nbsp;Hv'.&nbsp;inv&nbsp;lam_v.&nbsp;rewrite&nbsp;(eqStep&nbsp;(stepApp&nbsp;_&nbsp;_))&nbsp;in&nbsp;Hv'.&nbsp;simpl&nbsp;in&nbsp;Hv'.&nbsp;apply&nbsp;unique_normal_forms&nbsp;in&nbsp;Hv';<span class="inlinecode">|<span class="id" title="var">Lproc</span>..</span>.&nbsp;discriminate&nbsp;Hv'.&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;rewrite&nbsp;Se_correct';<span class="inlinecode">|<span class="id" title="var">Lproc</span></span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;eauto.<br/>
+Qed.<br/>
+<br/>
+End&nbsp;PartialFunctions.<br/>
+<br/>
+<br/>
+Hint&nbsp;Resolve&nbsp;S'_proc&nbsp;:&nbsp;LProc.<br/>
+<br/>
+Hint&nbsp;Resolve&nbsp;Se_proc&nbsp;:&nbsp;LProc.<br/>
+*)</span><br/>
+</div>
+</div>
+<div id="footer">
+  Generated by <a href="http://coq.inria.fr/">coqdoc</a> and improved with <a href="https://github.com/tebbi/coqdocjs">CoqdocJS</a>
+</div>
+</div>
+</body>
+
+</html>

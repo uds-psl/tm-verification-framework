@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<link href="coqdocjs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="coqdocjs.js"></script>
+</head>
+
+<body onload="document.getElementById('content').focus()">
+  <div id="header">
+    <span class="left">
+      <span class="modulename"> <script> document.write(document.title) </script> </span>
+    </span>
+
+    <span class="button" id="toggle-proofs"></span>
+
+    <span class="right">
+      <a href="../">Project Page</a>
+      <a href="./indexpage.html"> Index </a>
+      <a href="./toc.html"> Table of Contents </a>
+    </span>
+</div>
+    <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+    <div id="main">
+<div class="code">
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.TM.PrettyBounds.PrettyBounds.html#"><span class="id" title="library">PrettyBounds</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.TM.Code.CaseNat.html#"><span class="id" title="library">Code.CaseNat</span></a>.<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.TM.Code.CasePair.html#"><span class="id" title="library">Code.CasePair</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.TM.Code.CodeTM.html#"><span class="id" title="library">TM.Code.CodeTM</span></a> <a class="idref" href="Undecidability.TM.Code.Copy.html#"><span class="id" title="library">TM.Code.Copy</span></a>.<br/>
+
+<br/>
+<span class="comment">(*&nbsp;This&nbsp;definition&nbsp;doesn't&nbsp;work,&nbsp;because&nbsp;we&nbsp;need&nbsp;the&nbsp;quantifier&nbsp;for&nbsp;all&nbsp;values&nbsp;after&nbsp;<span class="inlinecode">(<span class="id" title="var">s</span>:</span> <span class="inlinecode"><span class="id" title="var">nat</span>)</span>&nbsp;*)</span><br/>
+<span class="comment">(*<br/>
+Definition&nbsp;dominatedWith_vec&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(f&nbsp;:&nbsp;Vector.t&nbsp;(nat-&gt;nat)&nbsp;n)&nbsp;(g&nbsp;:&nbsp;Vector.t&nbsp;(nat-&gt;nat)&nbsp;n)&nbsp;:=<br/>
+&nbsp;&nbsp;{&nbsp;c&nbsp;|&nbsp;forall&nbsp;(i&nbsp;:&nbsp;Fin.t&nbsp;n)&nbsp;(s&nbsp;:&nbsp;nat),&nbsp;f&nbsp;@&gt;i&nbsp;s&nbsp;&lt;=(c<span class="inlinecode">@<span class="id" title="var">i</span></span>)&nbsp;g&nbsp;@&gt;i&nbsp;s&nbsp;}.<br/>
+*)</span><br/>
+
+<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="Undecidability.TM.Code.ListTM.html#"><span class="id" title="library">ListTM</span></a> <a class="idref" href="Undecidability.TM.Code.CaseList.html#"><span class="id" title="library">CaseList</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.TM.PrettyBounds.MaxList.html#"><span class="id" title="library">MaxList</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Fixpoint</span> <a name="sum_list_rec"><span class="id" title="definition">sum_list_rec</span></a> (<span class="id" title="var">s</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) (<span class="id" title="var">xs</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#list"><span class="id" title="inductive">list</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#xs"><span class="id" title="variable">xs</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nil"><span class="id" title="constructor">nil</span></a> =&gt; <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s"><span class="id" title="variable">s</span></a><br/>
+&nbsp;&nbsp;| <span class="id" title="var">x</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#0a8150c3c4df34d205c5ed9a427e2ed5"><span class="id" title="notation">::</span></a> <span class="id" title="var">xs'</span> =&gt; <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#sum_list_rec"><span class="id" title="definition">sum_list_rec</span></a> (<a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> <span class="id" title="var">x</span>) <span class="id" title="var">xs'</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Lemma</span> <a name="sum_list_rec_plus"><span class="id" title="lemma">sum_list_rec_plus</span></a> (<span class="id" title="var">s1</span> <span class="id" title="var">s2</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) (<span class="id" title="var">xs</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#list"><span class="id" title="inductive">list</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) :<br/>
+&nbsp;&nbsp;<a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#sum_list_rec"><span class="id" title="definition">sum_list_rec</span></a> (<a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s1"><span class="id" title="variable">s1</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s2"><span class="id" title="variable">s2</span></a>) <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#xs"><span class="id" title="variable">xs</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s1"><span class="id" title="variable">s1</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#sum_list_rec"><span class="id" title="definition">sum_list_rec</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s2"><span class="id" title="variable">s2</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#xs"><span class="id" title="variable">xs</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">revert</span> <span class="id" title="var">s1</span> <span class="id" title="var">s2</span>. <span class="id" title="tactic">induction</span> <span class="id" title="var">xs</span> <span class="id" title="keyword">as</span> [ | <span class="id" title="var">x</span> <span class="id" title="var">xs</span> <span class="id" title="var">IH</span>]; <span class="id" title="tactic">intros</span>; <span class="id" title="var">cbn</span> <span class="id" title="tactic">in</span> *.<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">rewrite</span> <span class="id" title="var">IH</span>. <span class="id" title="tactic">rewrite</span> <span class="id" title="var">IH</span>. <span class="id" title="tactic">omega</span>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Lemma</span> <a name="sum_list_rec_S"><span class="id" title="lemma">sum_list_rec_S</span></a> (<span class="id" title="var">s</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) (<span class="id" title="var">xs</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#list"><span class="id" title="inductive">list</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) :<br/>
+&nbsp;&nbsp;<a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#sum_list_rec"><span class="id" title="definition">sum_list_rec</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s"><span class="id" title="variable">s</span></a>) <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#xs"><span class="id" title="variable">xs</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> (<a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#sum_list_rec"><span class="id" title="definition">sum_list_rec</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#xs"><span class="id" title="variable">xs</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>. <span class="id" title="tactic">change</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">s</span>) <span class="id" title="keyword">with</span> (1 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> <span class="id" title="var">s</span>). <span class="id" title="tactic">apply</span> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#sum_list_rec_plus"><span class="id" title="lemma">sum_list_rec_plus</span></a>. <span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Lemma</span> <a name="sum_list_rec_ge"><span class="id" title="lemma">sum_list_rec_ge</span></a> (<span class="id" title="var">s</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) (<span class="id" title="var">xs</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#list"><span class="id" title="inductive">list</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) :<br/>
+&nbsp;&nbsp;<a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#9b077c369e19739ef880736ba34623ff"><span class="id" title="notation">&lt;=</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#sum_list_rec"><span class="id" title="definition">sum_list_rec</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#xs"><span class="id" title="variable">xs</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">induction</span> <span class="id" title="var">xs</span> <span class="id" title="keyword">as</span> [ | <span class="id" title="var">x</span> <span class="id" title="var">xs</span>]; <span class="id" title="var">cbn</span> <span class="id" title="tactic">in</span> *.<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">rewrite</span> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#sum_list_rec_plus"><span class="id" title="lemma">sum_list_rec_plus</span></a>. <span class="id" title="tactic">omega</span>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="comment">(*<br/>
+Lemma&nbsp;Constr_pair_size_nice&nbsp;:<br/>
+&nbsp;&nbsp;{&nbsp;c&nbsp;|&nbsp;forall&nbsp;(s&nbsp;:&nbsp;nat)&nbsp;Constr_pair_size<br/>
+*)</span><br/>
+
+<br/>
+<span class="id" title="keyword">Global</span> <span class="id" title="var">Arguments</span> <a class="idref" href="Undecidability.TM.Code.Code.html#Encode_list_size"><span class="id" title="definition">Encode_list_size</span></a> {<span class="id" title="var">sigX</span> <span class="id" title="var">X</span> <span class="id" title="var">cX</span>}.<br/>
+<span class="id" title="keyword">Global</span> <span class="id" title="var">Arguments</span> <a class="idref" href="Undecidability.TM.Code.Code.html#size"><span class="id" title="definition">size</span></a> : <span class="id" title="tactic">simpl</span> <span class="id" title="var">never</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Do something with the <span class="inlinecode"><span class="id" title="var">k</span></span>th element in a chain of conjunctions 
+</div>
+<div class="code">
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">projk_fix</span> <span class="id" title="var">C</span> <span class="id" title="var">H</span> <span class="id" title="var">k</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> <span class="id" title="var">k</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| 0 =&gt; <span class="id" title="var">C</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#proj1"><span class="id" title="lemma">proj1</span></a> <span class="id" title="var">H</span>) + <span class="id" title="var">C</span> <span class="id" title="var">H</span><br/>
+&nbsp;&nbsp;| 1 =&gt; <span class="id" title="var">projk_fix</span> <span class="id" title="var">C</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#proj2"><span class="id" title="lemma">proj2</span></a> <span class="id" title="var">H</span>) 0<br/>
+&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> ?<span class="id" title="var">k'</span> =&gt; <span class="id" title="var">projk_fix</span> <span class="id" title="var">C</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#proj2"><span class="id" title="lemma">proj2</span></a> <span class="id" title="var">H</span>) <span class="id" title="var">k'</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Try to do something with every element in the chain of conjunctions 
+</div>
+<div class="code">
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">proj_fix</span> <span class="id" title="var">C</span> <span class="id" title="var">H</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> <span class="id" title="keyword">type</span> <span class="id" title="keyword">of</span> <span class="id" title="var">H</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| ?<span class="id" title="var">P1</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d82a7d96d3659d805ffe732283716822"><span class="id" title="notation">/\</span></a> ?<span class="id" title="var">P2</span> =&gt; <span class="id" title="var">C</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#proj1"><span class="id" title="lemma">proj1</span></a> <span class="id" title="var">H</span>) + <span class="id" title="var">proj_fix</span> <span class="id" title="var">C</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#proj2"><span class="id" title="lemma">proj2</span></a> <span class="id" title="var">H</span>)<br/>
+&nbsp;&nbsp;| <span class="id" title="var">_</span> =&gt; <span class="id" title="var">C</span> <span class="id" title="var">H</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Tactic Notation</span> "projk_rewrite"     <span class="id" title="keyword">constr</span>(<span class="id" title="var">H</span>) <span class="id" title="keyword">constr</span>(<span class="id" title="var">k</span>) := <span class="id" title="var">projk_fix</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">c</span> =&gt; <span class="id" title="var">erewrite</span>   <span class="id" title="var">c</span>) <span class="id" title="var">H</span> <span class="id" title="var">k</span>.<br/>
+<span class="id" title="keyword">Tactic Notation</span> "projk_rewrite" "-&gt;" <span class="id" title="keyword">constr</span>(<span class="id" title="var">H</span>) <span class="id" title="keyword">constr</span>(<span class="id" title="var">k</span>) := <span class="id" title="var">projk_fix</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">c</span> =&gt; <span class="id" title="var">erewrite</span> &lt;- <span class="id" title="var">c</span>) <span class="id" title="var">H</span> <span class="id" title="var">k</span>.<br/>
+<span class="id" title="keyword">Tactic Notation</span> "projk_rewrite" "&lt;-" <span class="id" title="keyword">constr</span>(<span class="id" title="var">H</span>) <span class="id" title="keyword">constr</span>(<span class="id" title="var">k</span>) := <span class="id" title="var">projk_fix</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">c</span> =&gt; <span class="id" title="var">erewrite</span> &lt;- <span class="id" title="var">c</span>) <span class="id" title="var">H</span> <span class="id" title="var">k</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+If we leave out the number, just try every proposition in the conjunction chain 
+</div>
+<div class="code">
+<span class="id" title="keyword">Tactic Notation</span> "projk_rewrite"     <span class="id" title="keyword">constr</span>(<span class="id" title="var">H</span>) := <span class="id" title="var">proj_fix</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">c</span> =&gt; <span class="id" title="var">erewrite</span>   <span class="id" title="var">c</span>) <span class="id" title="var">H</span>.<br/>
+<span class="id" title="keyword">Tactic Notation</span> "projk_rewrite" "-&gt;" <span class="id" title="keyword">constr</span>(<span class="id" title="var">H</span>) := <span class="id" title="var">proj_fix</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">c</span> =&gt; <span class="id" title="var">erewrite</span> -&gt; <span class="id" title="var">c</span>) <span class="id" title="var">H</span>.<br/>
+<span class="id" title="keyword">Tactic Notation</span> "projk_rewrite" "&lt;-" <span class="id" title="keyword">constr</span>(<span class="id" title="var">H</span>) := <span class="id" title="var">proj_fix</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">c</span> =&gt; <span class="id" title="var">erewrite</span> &lt;- <span class="id" title="var">c</span>) <span class="id" title="var">H</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Lemma</span> <a name="tam"><span class="id" title="lemma">tam</span></a> : 42 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> 40 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> 2 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d82a7d96d3659d805ffe732283716822"><span class="id" title="notation">/\</span></a> 50 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> 25 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> 25.<br/>
+<span class="id" title="keyword">Proof</span>. <span class="id" title="tactic">omega</span>. <span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Goal</span> 42 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> 40 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> 2.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">projk_rewrite</span> -&gt; <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#tam"><span class="id" title="lemma">tam</span></a> 0. <span class="id" title="tactic">reflexivity</span>.<br/>
+<span class="id" title="keyword">Restart</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">projk_rewrite</span> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#tam"><span class="id" title="lemma">tam</span></a>. <span class="id" title="tactic">reflexivity</span>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Lemma</span> <a name="tam'"><span class="id" title="lemma">tam'</span></a> : <span class="id" title="keyword">forall</span> <span class="id" title="var">x</span>, <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#9482aae3d3b06e249765c1225dbb8cbb"><span class="id" title="notation">-</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> 0 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d82a7d96d3659d805ffe732283716822"><span class="id" title="notation">/\</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> 2 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#697e4695610f677ae98a52af81f779d2"><span class="id" title="notation">*</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#x"><span class="id" title="variable">x</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>. <span class="id" title="tactic">intros</span>. <span class="id" title="tactic">omega</span>. <span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Goal</span> 42 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> 42 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> 2 <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#697e4695610f677ae98a52af81f779d2"><span class="id" title="notation">*</span></a> 42.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">projk_rewrite</span> (<a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#tam'"><span class="id" title="lemma">tam'</span></a> 42) 1. <span class="id" title="tactic">reflexivity</span>.<br/>
+<span class="id" title="keyword">Restart</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">projk_rewrite</span> (<a class="idref" href="Undecidability.TM.PrettyBounds.SpaceBounds.html#tam'"><span class="id" title="lemma">tam'</span></a> 42). <span class="id" title="tactic">reflexivity</span>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="comment">(*<br/>
+Module&nbsp;ApproachThatProbablyDoesntWork.<br/>
+<br/>
+&nbsp;&nbsp;<span class="comment">(**&nbsp;<span class="inlinecode"><span class="id" title="var">Length</span></span>&nbsp;*)</span><br/>
+&nbsp;&nbsp;Section&nbsp;Length_size_nice.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;(sigX&nbsp;X&nbsp;:&nbsp;Type)&nbsp;(cX&nbsp;:&nbsp;codable&nbsp;sigX&nbsp;X).<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(*&nbsp;What&nbsp;do&nbsp;we&nbsp;actually&nbsp;want&nbsp;to&nbsp;prove?&nbsp;*)</span><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;CaseList_size0_Reset_eq&nbsp;:&nbsp;forall&nbsp;(x&nbsp;:&nbsp;X)&nbsp;(xs&nbsp;:&nbsp;list&nbsp;X)&nbsp;(s&nbsp;:&nbsp;nat),&nbsp;(CaseList_size0&nbsp;x&nbsp;&gt;&gt;&nbsp;Reset_size&nbsp;xs)&nbsp;s&nbsp;=&nbsp;1&nbsp;+&nbsp;s&nbsp;+&nbsp;size&nbsp;(x::xs).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.&nbsp;intros.&nbsp;rewrite&nbsp;Encode_list_hasSize.&nbsp;cbn.&nbsp;unfold&nbsp;Reset_size,&nbsp;CaseList_size0.&nbsp;ring_simplify.&nbsp;rewrite&nbsp;&lt;-&nbsp;Encode_list_hasSize.&nbsp;nia.&nbsp;Qed.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;CaseList_size1_Reset_eq&nbsp;:&nbsp;forall&nbsp;(x&nbsp;:&nbsp;X)&nbsp;(s&nbsp;:&nbsp;nat),&nbsp;(CaseList_size1&nbsp;x&nbsp;&gt;&gt;&nbsp;Reset_size&nbsp;x)&nbsp;s&nbsp;=&nbsp;Init.Nat.max&nbsp;s&nbsp;(1&nbsp;+&nbsp;size&nbsp;x).&nbsp;<span class="comment">(*&nbsp;<span class="inlinecode"><span class="id" title="var">S</span></span> <span class="inlinecode">(<span class="id" title="var">size</span></span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode">+</span> <span class="inlinecode">(<span class="id" title="var">s</span></span> <span class="inlinecode">-</span> <span class="inlinecode"><span class="id" title="var">S</span></span> <span class="inlinecode">(<span class="id" title="var">size</span></span> <span class="inlinecode"><span class="id" title="var">x</span>)))</span>&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.&nbsp;intros.&nbsp;cbn.&nbsp;unfold&nbsp;Reset_size,&nbsp;CaseList_size1.&nbsp;nia.&nbsp;Qed.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(*&nbsp;I&nbsp;think&nbsp;the&nbsp;above&nbsp;lemma&nbsp;is&nbsp;the&nbsp;only&nbsp;simplification&nbsp;we&nbsp;can&nbsp;do&nbsp;for&nbsp;<span class="inlinecode"><span class="id" title="var">Length_Step_size</span></span>&nbsp;*)</span><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;Length_Loop_size_nice&nbsp;(xs&nbsp;:&nbsp;list&nbsp;X)&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s0&nbsp;:&nbsp;nat,&nbsp;(Length_Loop_size&nbsp;xs)@&gt;Fin0&nbsp;s0&nbsp;=&nbsp;sum_list_rec&nbsp;s0&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;xs))&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s1&nbsp;:&nbsp;nat,&nbsp;(Length_Loop_size&nbsp;xs)@&gt;Fin1&nbsp;s1&nbsp;=&nbsp;s1&nbsp;-&nbsp;length&nbsp;xs)&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s2&nbsp;:&nbsp;nat,&nbsp;(Length_Loop_size&nbsp;xs)@&gt;Fin2&nbsp;s2&nbsp;=&nbsp;max_list_rec&nbsp;s2&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;xs)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;repeat&nbsp;setoid_rewrite&nbsp;Encode_list_hasSize.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;induction&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span> <span class="inlinecode">(<span class="id" title="var">IH0</span>&amp;<span class="id" title="var">IH1</span>&amp;<span class="id" title="var">IH2</span>)</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;split;&nbsp;<span class="inlinecode">&gt;|<span class="id" title="tactic">split</span></span>;&nbsp;cbn&nbsp;in&nbsp;*;&nbsp;intros.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all:&nbsp;cbv&nbsp;<span class="inlinecode"><span class="id" title="var">id</span></span>;&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;repeat&nbsp;split;&nbsp;cbn&nbsp;in&nbsp;*;&nbsp;intros.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rewrite&nbsp;IH0.&nbsp;cbn.&nbsp;unfold&nbsp;CaseList_size0.&nbsp;f_equal.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rewrite&nbsp;IH1.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rewrite&nbsp;IH2.&nbsp;setoid_rewrite&nbsp;CaseList_size1_Reset_eq.&nbsp;f_equal.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Qed.<br/>
+<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;Encode_list_size_eq_sum_list_rec&nbsp;(xs&nbsp;:&nbsp;list&nbsp;X)&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Encode_list_size&nbsp;xs&nbsp;=&nbsp;sum_list_rec&nbsp;1&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;xs).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;induction&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span> <span class="inlinecode"><span class="id" title="var">IH</span></span>;&nbsp;cbn&nbsp;in&nbsp;*.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;reflexivity.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;rewrite&nbsp;IH.&nbsp;setoid_rewrite&nbsp;sum_list_rec_S&nbsp;at&nbsp;2.&nbsp;replace&nbsp;(S&nbsp;(size&nbsp;x))&nbsp;with&nbsp;(size&nbsp;x&nbsp;+&nbsp;1)&nbsp;by&nbsp;omega.&nbsp;rewrite&nbsp;sum_list_rec_plus.&nbsp;omega.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Qed.<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;Length_size.<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(**&nbsp;We&nbsp;shouldn't&nbsp;touch&nbsp;this&nbsp;any&nbsp;more&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Local&nbsp;Arguments&nbsp;Length_Loop_size&nbsp;:&nbsp;simpl&nbsp;never.<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(**&nbsp;This&nbsp;lemma&nbsp;is&nbsp;not&nbsp;really&nbsp;nice...&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;Length_size_nice'&nbsp;(xs&nbsp;:&nbsp;list&nbsp;X)&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s0&nbsp;:&nbsp;nat,&nbsp;(Length_size&nbsp;xs)@&gt;Fin0&nbsp;s0&nbsp;=&nbsp;s0)&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s1&nbsp;:&nbsp;nat,&nbsp;(Length_size&nbsp;xs)@&gt;Fin1&nbsp;s1&nbsp;=&nbsp;s1&nbsp;-&nbsp;2&nbsp;-&nbsp;length&nbsp;xs)&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s2&nbsp;:&nbsp;nat,&nbsp;(Length_size&nbsp;xs)@&gt;Fin2&nbsp;s2&nbsp;=&nbsp;max_list_rec&nbsp;s2&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;xs))&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s3&nbsp;:&nbsp;nat,&nbsp;(Length_size&nbsp;xs)@&gt;Fin3&nbsp;s3&nbsp;=&nbsp;1&nbsp;+&nbsp;size&nbsp;nil&nbsp;+&nbsp;sum_list_rec&nbsp;(s3&nbsp;-&nbsp;(1&nbsp;+&nbsp;size&nbsp;xs))&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;xs)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unfold&nbsp;Length_size;&nbsp;cbn.&nbsp;intros.&nbsp;repeat&nbsp;split;&nbsp;intros.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;rewrite&nbsp;(proj1&nbsp;(proj2&nbsp;(Length_Loop_size_nice&nbsp;xs))).&nbsp;unfold&nbsp;Constr_O_size.&nbsp;cbn.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;now&nbsp;rewrite&nbsp;(proj2&nbsp;(proj2&nbsp;(Length_Loop_size_nice&nbsp;xs))).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;unfold&nbsp;Reset_size,&nbsp;CopyValue_size.&nbsp;now&nbsp;rewrite&nbsp;(proj1&nbsp;(Length_Loop_size_nice&nbsp;xs)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Qed.<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;tam&nbsp;:&nbsp;forall&nbsp;(xs&nbsp;:&nbsp;list&nbsp;X)&nbsp;(s2&nbsp;:&nbsp;nat),&nbsp;max_list_rec&nbsp;s2&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;:&nbsp;X&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;xs)&nbsp;&lt;=&nbsp;Init.Nat.max&nbsp;s2&nbsp;(size&nbsp;xs).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;repeat&nbsp;setoid_rewrite&nbsp;Encode_list_hasSize.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;induction&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span> <span class="inlinecode"><span class="id" title="var">IH</span></span>;&nbsp;intros;&nbsp;cbn&nbsp;in&nbsp;*.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;rewrite&nbsp;IH.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Qed.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;Length_size_nice&nbsp;(xs&nbsp;:&nbsp;list&nbsp;X)&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s0&nbsp;:&nbsp;nat,&nbsp;(Length_size&nbsp;xs)@&gt;Fin0&nbsp;s0&nbsp;=&nbsp;s0)&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s1&nbsp;:&nbsp;nat,&nbsp;(Length_size&nbsp;xs)@&gt;Fin1&nbsp;s1&nbsp;&lt;=&nbsp;s1&nbsp;-&nbsp;size&nbsp;(length&nbsp;xs))&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s2&nbsp;:&nbsp;nat,&nbsp;(Length_size&nbsp;xs)@&gt;Fin2&nbsp;s2&nbsp;&lt;=&nbsp;max&nbsp;s2&nbsp;(size&nbsp;xs))&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;s3&nbsp;:&nbsp;nat,&nbsp;(Length_size&nbsp;xs)@&gt;Fin3&nbsp;s3&nbsp;=&nbsp;1&nbsp;+&nbsp;size&nbsp;nil&nbsp;+&nbsp;sum_list_rec&nbsp;(s3&nbsp;-&nbsp;(1&nbsp;+&nbsp;size&nbsp;xs))&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;xs))&nbsp;<span class="comment">(*TODO*)</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;repeat&nbsp;split;&nbsp;intros.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;rewrite&nbsp;(proj1&nbsp;(proj2&nbsp;(Length_size_nice'&nbsp;xs))).&nbsp;rewrite&nbsp;Encode_nat_hasSize.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;rewrite&nbsp;(proj1&nbsp;(proj2&nbsp;(proj2&nbsp;(Length_size_nice'&nbsp;xs)))).&nbsp;apply&nbsp;tam.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;now&nbsp;rewrite&nbsp;(proj2&nbsp;(proj2&nbsp;(proj2&nbsp;(Length_size_nice'&nbsp;xs)))).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Qed.<br/>
+<br/>
+&nbsp;&nbsp;End&nbsp;Length_size_nice.<br/>
+<br/>
+&nbsp;&nbsp;Local&nbsp;Arguments&nbsp;skipn&nbsp;:&nbsp;simpl&nbsp;never.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+<br/>
+&nbsp;&nbsp;<span class="comment">(**&nbsp;<span class="inlinecode"><span class="id" title="var">Nth'</span></span>&nbsp;*)</span><br/>
+&nbsp;&nbsp;Section&nbsp;Nth'_size_nice.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;(sigX&nbsp;X&nbsp;:&nbsp;Type)&nbsp;(cX&nbsp;:&nbsp;codable&nbsp;sigX&nbsp;X).<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;Nth'_Loop_size.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;Nth'_Step_size.<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;Nth'_Loop_size_nice&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;xs&nbsp;s0,&nbsp;(Nth'_Loop_size&nbsp;n&nbsp;xs)@&gt;Fin0&nbsp;s0&nbsp;=&nbsp;sum_list_rec&nbsp;s0&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;(firstn&nbsp;(S&nbsp;n)&nbsp;xs)))&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;xs&nbsp;s1,&nbsp;(Nth'_Loop_size&nbsp;n&nbsp;xs)@&gt;Fin1&nbsp;s1&nbsp;&lt;=&nbsp;max_list_rec&nbsp;s1&nbsp;(map&nbsp;(fun&nbsp;x&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;x)&nbsp;(firstn&nbsp;(n)&nbsp;xs)))&nbsp;/\&nbsp;<span class="comment">(*&nbsp;TODO&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;xs&nbsp;s2,&nbsp;(Nth'_Loop_size&nbsp;n&nbsp;xs)@&gt;Fin2&nbsp;s2&nbsp;&lt;=&nbsp;(Nth'_Loop_size&nbsp;n&nbsp;xs)@&gt;Fin2&nbsp;s2)&nbsp;<span class="comment">(*&nbsp;TODO&nbsp;*)</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;induction&nbsp;n&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">(<span class="id" title="var">IH0</span>&amp;<span class="id" title="var">IH1</span>&amp;<span class="id" title="var">IH2</span>)</span>;&nbsp;intros;&nbsp;cbn&nbsp;in&nbsp;*.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;repeat&nbsp;split;&nbsp;intros.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;destruct&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span>;&nbsp;cbn.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;unfold&nbsp;id.&nbsp;reflexivity.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;unfold&nbsp;CaseList_size0.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;destruct&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span>;&nbsp;cbn;&nbsp;auto.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;destruct&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span>;&nbsp;cbn;&nbsp;auto.&nbsp;<span class="comment">(*&nbsp;TODO&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;repeat&nbsp;split;&nbsp;intros.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;destruct&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span>;&nbsp;cbn.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;unfold&nbsp;id.&nbsp;reflexivity.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;change&nbsp;(skipn&nbsp;(S&nbsp;(S&nbsp;n))&nbsp;(x&nbsp;::&nbsp;xs))&nbsp;with&nbsp;(skipn&nbsp;(S&nbsp;n)&nbsp;xs).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite&nbsp;IH0.&nbsp;unfold&nbsp;CaseList_size0.&nbsp;repeat&nbsp;rewrite&nbsp;!sum_list_rec_S&nbsp;+&nbsp;rewrite&nbsp;!sum_list_rec_plus.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;destruct&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span>;&nbsp;cbn;&nbsp;auto.&nbsp;<span class="comment">(*&nbsp;TODO&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all:&nbsp;admit.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;destruct&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span>;&nbsp;cbn;&nbsp;auto.&nbsp;<span class="comment">(*&nbsp;TODO&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Abort.<br/>
+<br/>
+<br/>
+&nbsp;&nbsp;End&nbsp;Nth'_size_nice.<br/>
+<br/>
+<br/>
+&nbsp;&nbsp;Lemma&nbsp;CasePair_size0_Reset_eq&nbsp;(sigX&nbsp;sigY&nbsp;X&nbsp;Y&nbsp;:&nbsp;Type)&nbsp;(cX&nbsp;:&nbsp;codable&nbsp;sigX&nbsp;X)&nbsp;(cY&nbsp;:&nbsp;codable&nbsp;sigY&nbsp;Y)&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;(x&nbsp;:&nbsp;X)&nbsp;(y&nbsp;:&nbsp;Y)&nbsp;(s&nbsp;:&nbsp;nat),&nbsp;(CasePair_size0&nbsp;x&nbsp;&gt;&gt;&nbsp;Reset_size&nbsp;y)&nbsp;s&nbsp;=&nbsp;1&nbsp;+&nbsp;s&nbsp;+&nbsp;size&nbsp;(x,y).<br/>
+&nbsp;&nbsp;Proof.&nbsp;intros.&nbsp;cbn.&nbsp;unfold&nbsp;Reset_size,&nbsp;CasePair_size0.&nbsp;rewrite&nbsp;Encode_pair_hasSize;&nbsp;cbn.&nbsp;nia.&nbsp;Qed.<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;Lemma&nbsp;CasePair_size1_Reset_eq&nbsp;(sigX&nbsp;sigY&nbsp;X&nbsp;Y&nbsp;:&nbsp;Type)&nbsp;(cX&nbsp;:&nbsp;codable&nbsp;sigX&nbsp;X)&nbsp;(cY&nbsp;:&nbsp;codable&nbsp;sigY&nbsp;Y)&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;(x&nbsp;:&nbsp;X)&nbsp;(y&nbsp;:&nbsp;Y)&nbsp;(s&nbsp;:&nbsp;nat),&nbsp;(CasePair_size1&nbsp;x&nbsp;&gt;&gt;&nbsp;Reset_size&nbsp;y)&nbsp;s&nbsp;=&nbsp;S&nbsp;(size&nbsp;y&nbsp;+&nbsp;(s&nbsp;-&nbsp;size&nbsp;x)).&nbsp;<span class="comment">(*&nbsp;TODO:&nbsp;is&nbsp;there&nbsp;a&nbsp;term&nbsp;with&nbsp;<span class="inlinecode"><span class="id" title="var">max</span></span>&nbsp;for&nbsp;this?&nbsp;*)</span><br/>
+&nbsp;&nbsp;Proof.&nbsp;intros.&nbsp;cbn.&nbsp;unfold&nbsp;Reset_size,&nbsp;CasePair_size1.&nbsp;nia.&nbsp;Qed.<br/>
+<br/>
+&nbsp;&nbsp;Section&nbsp;LookupAssociativeList_nice.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;(sigX&nbsp;sigY&nbsp;:&nbsp;finType).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;(X&nbsp;:&nbsp;eqType)&nbsp;(Y&nbsp;:&nbsp;Type)&nbsp;(cX&nbsp;:&nbsp;codable&nbsp;sigX&nbsp;X)&nbsp;(cY&nbsp;:&nbsp;codable&nbsp;sigY&nbsp;Y).<br/>
+<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;Lookup_Loop_size.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;Lookup_Step_size.<br/>
+<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Lemma&nbsp;Lookup_Loop_size_nice&nbsp;(xs&nbsp;:&nbsp;list&nbsp;(X*Y))&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;s0,&nbsp;Lookup_Loop_size&nbsp;xs&nbsp;x&nbsp;@&gt;Fin0&nbsp;s0&nbsp;&lt;=&nbsp;1&nbsp;+&nbsp;s0&nbsp;+&nbsp;size&nbsp;xs)&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;s1,&nbsp;Lookup_Loop_size&nbsp;xs&nbsp;x&nbsp;@&gt;Fin1&nbsp;s1&nbsp;&lt;=&nbsp;size&nbsp;x&nbsp;+&nbsp;max_list_rec&nbsp;s1&nbsp;(map&nbsp;(fun&nbsp;xy&nbsp;=&gt;&nbsp;1&nbsp;+&nbsp;size&nbsp;(fst&nbsp;xy))&nbsp;xs))&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;s2,&nbsp;Lookup_Loop_size&nbsp;xs&nbsp;x&nbsp;@&gt;Fin2&nbsp;s2&nbsp;&lt;=&nbsp;max&nbsp;s2&nbsp;(size&nbsp;xs))&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;s3,&nbsp;Lookup_Loop_size&nbsp;xs&nbsp;x&nbsp;@&gt;Fin3&nbsp;s3&nbsp;&lt;=&nbsp;1&nbsp;+&nbsp;max&nbsp;s3&nbsp;(size&nbsp;x&nbsp;+&nbsp;size&nbsp;xs))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Proof.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite&nbsp;Encode_list_hasSize.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;induction&nbsp;xs&nbsp;as&nbsp;<span class="inlinecode"></span> <span class="inlinecode">|</span> <span class="inlinecode">[<span class="id" title="var">x'</span></span> <span class="inlinecode"><span class="id" title="var">y</span>]</span> <span class="inlinecode"><span class="id" title="var">xs</span></span> <span class="inlinecode">(<span class="id" title="var">IH0</span>&amp;<span class="id" title="var">IH1</span>&amp;<span class="id" title="var">IH2</span>&amp;<span class="id" title="var">IH3</span>)</span>;&nbsp;intros;&nbsp;cbn&nbsp;in&nbsp;*.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;repeat&nbsp;split;&nbsp;intros;&nbsp;cbn&nbsp;in&nbsp;*.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;unfold&nbsp;ResetEmpty1_size.&nbsp;cbn.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;unfold&nbsp;id.&nbsp;omega.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;unfold&nbsp;id.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;unfold&nbsp;id.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;repeat&nbsp;split;&nbsp;intros;&nbsp;cbn&nbsp;in&nbsp;*.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;decide&nbsp;(x=x')&nbsp;as&nbsp;<span class="inlinecode">&lt;-|<span class="id" title="var">Hdec</span></span>;&nbsp;cbn.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;setoid_rewrite&nbsp;CaseList_size0_Reset_eq.&nbsp;rewrite&nbsp;!Encode_list_hasSize;&nbsp;cbn.&nbsp;ring_simplify.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;rewrite&nbsp;IH0.&nbsp;ring_simplify.&nbsp;unfold&nbsp;CaseList_size0.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;decide&nbsp;(x=x')&nbsp;as&nbsp;<span class="inlinecode">&lt;-|<span class="id" title="var">Hdec</span></span>;&nbsp;cbn.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;unfold&nbsp;MoveValue_size_y.&nbsp;rewrite&nbsp;&lt;-&nbsp;max_list_rec_ge.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;rewrite&nbsp;IH1.&nbsp;ring_simplify.&nbsp;unfold&nbsp;id.&nbsp;apply&nbsp;plus_le_compat_l.&nbsp;apply&nbsp;max_list_rec_monotone.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;decide&nbsp;(x=x')&nbsp;as&nbsp;<span class="inlinecode">&lt;-|<span class="id" title="var">Hdec</span></span>;&nbsp;cbn.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;unfold&nbsp;MoveValue_size_x.&nbsp;unfold&nbsp;CasePair_size0.&nbsp;unfold&nbsp;CaseList_size1.&nbsp;rewrite&nbsp;!Encode_pair_hasSize;&nbsp;cbn.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;rewrite&nbsp;IH2.&nbsp;setoid_rewrite&nbsp;CasePair_size0_Reset_eq.&nbsp;unfold&nbsp;CaseList_size1.&nbsp;rewrite&nbsp;!Encode_pair_hasSize;&nbsp;cbn.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;decide&nbsp;(x=x')&nbsp;as&nbsp;<span class="inlinecode">&lt;-|<span class="id" title="var">Hdec</span></span>;&nbsp;cbn.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;setoid_rewrite&nbsp;CasePair_size1_Reset_eq.&nbsp;rewrite&nbsp;Encode_pair_hasSize;&nbsp;cbn.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transitivity&nbsp;(1&nbsp;+&nbsp;max&nbsp;s3&nbsp;(size&nbsp;x));&nbsp;<span class="inlinecode"></span> <span class="inlinecode"><span class="id" title="tactic">apply</span></span> <span class="inlinecode"><span class="id" title="var">Nat.eq_le_incl</span>;</span> <span class="inlinecode"><span class="id" title="var">nia</span></span> <span class="inlinecode">|</span> <span class="inlinecode"></span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ring_simplify.&nbsp;apply&nbsp;plus_le_compat_r.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;rewrite&nbsp;IH3.&nbsp;setoid_rewrite&nbsp;CasePair_size1_Reset_eq.&nbsp;rewrite&nbsp;Encode_pair_hasSize;&nbsp;cbn.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ring_simplify.&nbsp;apply&nbsp;plus_le_compat_r.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transitivity&nbsp;(max&nbsp;(1&nbsp;+&nbsp;max&nbsp;s3&nbsp;(size&nbsp;x'))&nbsp;(size&nbsp;x&nbsp;+&nbsp;Encode_list_size&nbsp;xs));&nbsp;<span class="inlinecode"></span> <span class="inlinecode"><span class="id" title="tactic">apply</span></span> <span class="inlinecode"><span class="id" title="var">Nat.eq_le_incl</span>;</span> <span class="inlinecode"><span class="id" title="var">nia</span></span> <span class="inlinecode">|</span> <span class="inlinecode"></span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply&nbsp;Nat.max_le_compat.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;admit.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;try&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Admitted.&nbsp;<span class="comment">(*&nbsp;TODO&nbsp;*)</span><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;Lookup_size.<br/>
+<br/>
+&nbsp;&nbsp;End&nbsp;LookupAssociativeList_nice.<br/>
+<br/>
+<br/>
+End&nbsp;ApproachThatProbablyDoesntWork.<br/>
+<br/>
+<br/>
+<br/>
+<span class="comment">(**&nbsp;Another&nbsp;approach:&nbsp;consider&nbsp;the&nbsp;term&nbsp;<span class="inlinecode"><span class="id" title="var">restSize</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">size</span>(<span class="id" title="var">X</span>)</span>&nbsp;*)</span><br/>
+<br/>
+Lemma&nbsp;Constr_S_size_nice&nbsp;:<br/>
+&nbsp;&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(rest&nbsp;:&nbsp;nat),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;k&nbsp;:=&nbsp;rest&nbsp;+&nbsp;size&nbsp;n&nbsp;in&nbsp;<span class="comment">(*&nbsp;<span class="inlinecode"><span class="id" title="var">k</span></span>&nbsp;is&nbsp;the&nbsp;"total&nbsp;number&nbsp;of&nbsp;symbols"&nbsp;(w/o&nbsp;start/stop&nbsp;symbols)&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(pred&nbsp;rest)&nbsp;+&nbsp;size(1+n)&nbsp;=&nbsp;max&nbsp;k&nbsp;(size&nbsp;(S&nbsp;n)).<br/>
+Proof.<br/>
+&nbsp;&nbsp;intros.<br/>
+&nbsp;&nbsp;transitivity&nbsp;((k&nbsp;-&nbsp;size(n)&nbsp;-&nbsp;1)&nbsp;+&nbsp;size(1&nbsp;+&nbsp;n)).<br/>
+&nbsp;&nbsp;-&nbsp;subst&nbsp;k.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;nia.<br/>
+&nbsp;&nbsp;-&nbsp;transitivity&nbsp;((k&nbsp;-&nbsp;n&nbsp;-&nbsp;2)&nbsp;+&nbsp;2&nbsp;+&nbsp;n).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;subst&nbsp;k.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;ring_simplify.&nbsp;nia.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rewrite&nbsp;Encode_nat_hasSize.&nbsp;nia.<br/>
+Qed.<br/>
+&nbsp;&nbsp;<br/>
+Lemma&nbsp;CaseNat_size_nice&nbsp;:<br/>
+&nbsp;&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(rest&nbsp;:&nbsp;nat),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;k&nbsp;:=&nbsp;rest&nbsp;+&nbsp;size&nbsp;n&nbsp;in<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(1&nbsp;&lt;=&nbsp;n&nbsp;-&gt;&nbsp;S&nbsp;rest&nbsp;+&nbsp;size&nbsp;(pred&nbsp;n)&nbsp;=&nbsp;max&nbsp;k&nbsp;(size&nbsp;(pred&nbsp;n)))&nbsp;/\<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(n&nbsp;=&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;rest&nbsp;+&nbsp;size&nbsp;(pred&nbsp;n)&nbsp;=&nbsp;1&nbsp;+&nbsp;k).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(*&nbsp;(S&nbsp;rest&nbsp;+&nbsp;size&nbsp;(pred&nbsp;n)&nbsp;=&nbsp;k).&nbsp;*)</span><br/>
+Proof.<br/>
+&nbsp;&nbsp;intros.&nbsp;subst&nbsp;k.&nbsp;repeat&nbsp;split.<br/>
+&nbsp;&nbsp;-&nbsp;intros.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;ring_simplify.&nbsp;transitivity&nbsp;(rest&nbsp;+&nbsp;(max&nbsp;1&nbsp;n)&nbsp;+&nbsp;1);&nbsp;<span class="inlinecode"></span> <span class="inlinecode"><span class="id" title="var">nia</span></span> <span class="inlinecode">|</span> <span class="inlinecode"></span>.&nbsp;nia.<br/>
+&nbsp;&nbsp;-&nbsp;intros&nbsp;-&gt;.&nbsp;cbn.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;nia.<br/>
+&nbsp;&nbsp;<span class="comment">(*&nbsp;-&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;&nbsp;*)</span><br/>
+Qed.<br/>
+<br/>
+<br/>
+Definition&nbsp;CaseNat_size&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(s&nbsp;:&nbsp;nat)&nbsp;:=<br/>
+&nbsp;&nbsp;match&nbsp;n&nbsp;with<br/>
+&nbsp;&nbsp;|&nbsp;0&nbsp;=&gt;&nbsp;s<br/>
+&nbsp;&nbsp;|&nbsp;_&nbsp;=&gt;&nbsp;S&nbsp;s<br/>
+&nbsp;&nbsp;end.<br/>
+<br/>
+Lemma&nbsp;CaseNat_size_nice'&nbsp;:<br/>
+&nbsp;&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(rest&nbsp;:&nbsp;nat),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;k&nbsp;:=&nbsp;rest&nbsp;+&nbsp;size&nbsp;n&nbsp;in<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;CaseNat_size&nbsp;n&nbsp;rest&nbsp;+&nbsp;size&nbsp;(pred&nbsp;n)&nbsp;=&nbsp;max&nbsp;k&nbsp;(size&nbsp;(pred&nbsp;n)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(*&nbsp;(S&nbsp;rest&nbsp;+&nbsp;size&nbsp;(pred&nbsp;n)&nbsp;=&nbsp;k).&nbsp;*)</span><br/>
+Proof.<br/>
+&nbsp;&nbsp;intros.&nbsp;subst.&nbsp;repeat&nbsp;split.<br/>
+&nbsp;&nbsp;destruct&nbsp;n;&nbsp;cbn.<br/>
+&nbsp;&nbsp;-&nbsp;subst&nbsp;k.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;nia.<br/>
+&nbsp;&nbsp;-&nbsp;subst&nbsp;k.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;nia.<br/>
+Qed.<br/>
+<br/>
+<br/>
+Lemma&nbsp;ConstrS_CaseNat_size_nice&nbsp;:<br/>
+&nbsp;&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(rest&nbsp;:&nbsp;nat),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;k&nbsp;:=&nbsp;rest&nbsp;+&nbsp;size&nbsp;n&nbsp;in<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(S&nbsp;&gt;&gt;&nbsp;pred)&nbsp;rest&nbsp;+&nbsp;size&nbsp;n&nbsp;=&nbsp;max&nbsp;k&nbsp;1.<br/>
+Proof.<br/>
+&nbsp;&nbsp;intros.&nbsp;cbn.&nbsp;destruct&nbsp;n;&nbsp;cbn.<br/>
+&nbsp;&nbsp;-&nbsp;subst&nbsp;k.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;nia.<br/>
+&nbsp;&nbsp;-&nbsp;subst&nbsp;k.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;nia.<br/>
+Qed.<br/>
+<br/>
+Lemma&nbsp;ConstrS_CaseNat_size_nice'&nbsp;:<br/>
+&nbsp;&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(rest&nbsp;:&nbsp;nat),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;k&nbsp;:=&nbsp;rest&nbsp;+&nbsp;size&nbsp;n&nbsp;in<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(CaseNat_size&nbsp;n&nbsp;&gt;&gt;&nbsp;pred)&nbsp;rest&nbsp;+&nbsp;size&nbsp;n&nbsp;&lt;=&nbsp;max&nbsp;k&nbsp;1.<br/>
+Proof.<br/>
+&nbsp;&nbsp;intros.&nbsp;cbn.&nbsp;destruct&nbsp;n;&nbsp;cbn.<br/>
+&nbsp;&nbsp;-&nbsp;subst&nbsp;k.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;nia.<br/>
+&nbsp;&nbsp;-&nbsp;subst&nbsp;k.&nbsp;rewrite&nbsp;!Encode_nat_hasSize.&nbsp;nia.<br/>
+Qed.<br/>
+<br/>
+<br/>
+*)</span><br/>
+</div>
+</div>
+<div id="footer">
+  Generated by <a href="http://coq.inria.fr/">coqdoc</a> and improved with <a href="https://github.com/tebbi/coqdocjs">CoqdocJS</a>
+</div>
+</div>
+</body>
+
+</html>

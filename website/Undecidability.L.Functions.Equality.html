@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<link href="coqdocjs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="coqdocjs.js"></script>
+</head>
+
+<body onload="document.getElementById('content').focus()">
+  <div id="header">
+    <span class="left">
+      <span class="modulename"> <script> document.write(document.title) </script> </span>
+    </span>
+
+    <span class="button" id="toggle-proofs"></span>
+
+    <span class="right">
+      <a href="../">Project Page</a>
+      <a href="./indexpage.html"> Index </a>
+      <a href="./toc.html"> Table of Contents </a>
+    </span>
+</div>
+    <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+    <div id="main">
+<div class="code">
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability.L</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.L.Datatypes.LBool.html#"><span class="id" title="library">Datatypes.LBool</span></a> <a class="idref" href="Undecidability.L.Datatypes.LNat.html#"><span class="id" title="library">Datatypes.LNat</span></a> <a class="idref" href="Undecidability.L.Functions.Encoding.html#"><span class="id" title="library">Functions.Encoding</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Nat.html#"><span class="id" title="library">Nat</span></a>.<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability.L</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="Undecidability.L.Tactics.LTactics.html#"><span class="id" title="library">Tactics.LTactics</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab340"></a><h1 class="section">Extracted Functions</h1>
+
+<div class="paragraph"> </div>
+
+<a name="lab341"></a><h2 class="section">Extracted equality of encoded natural numbers</h2>
+
+</div>
+<div class="code">
+<span class="comment">(*<br/>
+Instance&nbsp;term_nat_eqb&nbsp;:&nbsp;computable&nbsp;eqb.<br/>
+Proof.<br/>
+&nbsp;&nbsp;internalize&nbsp;auto.&nbsp;<br/>
+Defined.*)</span><br/>
+<span class="comment">(*<br/>
+Instance&nbsp;term_nat_eq_dec&nbsp;:&nbsp;computable&nbsp;nat_eq_dec.<br/>
+Proof.<br/>
+&nbsp;&nbsp;pose&nbsp;(f&nbsp;x&nbsp;y&nbsp;:=to_sumbool&nbsp;(eqb&nbsp;x&nbsp;y)).<br/>
+&nbsp;&nbsp;internalizeWith&nbsp;f.&nbsp;Lsimpl.<br/>
+&nbsp;&nbsp;apply&nbsp;reflect_dec.<br/>
+&nbsp;&nbsp;eapply&nbsp;Nat.eqb_spec.<br/>
+Defined.*)</span><br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab342"></a><h2 class="section">Extracted equality of encoded terms</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Fixpoint</span> <a name="term_eqb"><span class="id" title="definition">term_eqb</span></a> <span class="id" title="var">s</span> <span class="id" title="var">t</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="Undecidability.L.Functions.Equality.html#s"><span class="id" title="variable">s</span></a>,<a class="idref" href="Undecidability.L.Functions.Equality.html#t"><span class="id" title="variable">t</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="Undecidability.L.L.html#var"><span class="id" title="constructor">var</span></a> <span class="id" title="var">n</span>, <a class="idref" href="Undecidability.L.L.html#var"><span class="id" title="constructor">var</span></a> <span class="id" title="var">m</span> =&gt; <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Nat.html#eqb"><span class="id" title="definition">eqb</span></a> <span class="id" title="var">n</span> <span class="id" title="var">m</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="Undecidability.L.L.html#app"><span class="id" title="constructor">app</span></a> <span class="id" title="var">s1</span> <span class="id" title="var">t1</span>, <a class="idref" href="Undecidability.L.L.html#app"><span class="id" title="constructor">app</span></a> <span class="id" title="var">s2</span> <span class="id" title="var">t2</span> =&gt; <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#andb"><span class="id" title="definition">andb</span></a> (<a class="idref" href="Undecidability.L.Functions.Equality.html#term_eqb"><span class="id" title="definition">term_eqb</span></a> <span class="id" title="var">s1</span> <span class="id" title="var">s2</span>) (<a class="idref" href="Undecidability.L.Functions.Equality.html#term_eqb"><span class="id" title="definition">term_eqb</span></a> <span class="id" title="var">t1</span> <span class="id" title="var">t2</span>)<br/>
+&nbsp;&nbsp;| <a class="idref" href="Undecidability.L.L.html#lam"><span class="id" title="constructor">lam</span></a> <span class="id" title="var">s'</span>,<a class="idref" href="Undecidability.L.L.html#lam"><span class="id" title="constructor">lam</span></a> <span class="id" title="var">t'</span> =&gt; <a class="idref" href="Undecidability.L.Functions.Equality.html#term_eqb"><span class="id" title="definition">term_eqb</span></a> <span class="id" title="var">s'</span> <span class="id" title="var">t'</span><br/>
+&nbsp;&nbsp;| <span class="id" title="var">_</span>,<span class="id" title="var">_</span> =&gt; <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#false"><span class="id" title="constructor">false</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="term_term_eqb"><span class="id" title="instance">term_term_eqb</span></a> : <a class="idref" href="Undecidability.L.Tactics.Computable.html#computable"><span class="id" title="class">computable</span></a> <a class="idref" href="Undecidability.L.Functions.Equality.html#term_eqb"><span class="id" title="definition">term_eqb</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">extract</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Lemma</span> <a name="term_eqb_spec"><span class="id" title="lemma">term_eqb_spec</span></a> : <span class="id" title="keyword">forall</span> <span class="id" title="var">x</span> <span class="id" title="var">y1</span> : <a class="idref" href="Undecidability.L.L.html#term"><span class="id" title="inductive">term</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Bool.Bool.html#reflect"><span class="id" title="inductive">reflect</span></a> (<a class="idref" href="Undecidability.L.Functions.Equality.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="Undecidability.L.Functions.Equality.html#y1"><span class="id" title="variable">y1</span></a>) (<a class="idref" href="Undecidability.L.Functions.Equality.html#term_eqb"><span class="id" title="definition">term_eqb</span></a> <a class="idref" href="Undecidability.L.Functions.Equality.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="Undecidability.L.Functions.Equality.html#y1"><span class="id" title="variable">y1</span></a>).<br/>
+<span class="id" title="keyword">Proof</span> <span class="id" title="keyword">with</span> <span class="id" title="tactic">try</span> (<span class="id" title="tactic">constructor</span>;<span class="id" title="tactic">congruence</span>).<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">induction</span> <span class="id" title="var">x</span>;<span class="id" title="var">cbn</span>; <span class="id" title="tactic">destruct</span> <span class="id" title="var">y1</span>...<br/>
+&nbsp;&nbsp;-<span class="id" title="tactic">destruct</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Arith.PeanoNat.html#Nat.eqb_spec"><span class="id" title="lemma">Nat.eqb_spec</span></a> <span class="id" title="var">n</span> <span class="id" title="var">n0</span>)...<br/>
+&nbsp;&nbsp;-<span class="id" title="tactic">destruct</span> (<span class="id" title="var">IHx1</span> <span class="id" title="var">y1_1</span>)...<br/>
+&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> (<span class="id" title="var">IHx2</span> <span class="id" title="var">y1_2</span>)...<br/>
+&nbsp;&nbsp;-<span class="id" title="tactic">destruct</span> (<span class="id" title="var">IHx</span> <span class="id" title="var">y1</span>)...<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="comment">(*<br/>
+Instance&nbsp;term_term_eq_dec&nbsp;:&nbsp;computable&nbsp;term_eq_dec.<br/>
+Proof.<br/>
+&nbsp;&nbsp;pose&nbsp;(f&nbsp;x&nbsp;y&nbsp;:=&nbsp;to_sumbool&nbsp;(term_eqb&nbsp;x&nbsp;y)).<br/>
+&nbsp;&nbsp;internalizeWith&nbsp;f.&nbsp;Lsimpl.<br/>
+&nbsp;&nbsp;apply&nbsp;reflect_dec.<br/>
+&nbsp;&nbsp;revert&nbsp;y0.&nbsp;induction&nbsp;y&nbsp;as&nbsp;<span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">s1</span></span> <span class="inlinecode"><span class="id" title="var">H1</span></span> <span class="inlinecode"><span class="id" title="var">s2</span></span> <span class="inlinecode"><span class="id" title="var">H2</span>|</span> <span class="inlinecode"><span class="id" title="var">s</span></span> <span class="inlinecode"><span class="id" title="var">H</span></span>;intros&nbsp;<span class="inlinecode"><span class="id" title="var">y</span></span> <span class="inlinecode">|</span> <span class="inlinecode"><span class="id" title="var">t1</span></span> <span class="inlinecode"><span class="id" title="var">t2</span>|</span> <span class="inlinecode"><span class="id" title="var">t</span></span>;cbn;try&nbsp;constructor;try&nbsp;congruence.<br/>
+&nbsp;&nbsp;-dec;constructor;congruence.&nbsp;<br/>
+&nbsp;&nbsp;-specialize&nbsp;(H1&nbsp;t1).&nbsp;specialize&nbsp;(H2&nbsp;t2).&nbsp;do&nbsp;2&nbsp;destruct&nbsp;(term_eqb);simpl&nbsp;in&nbsp;*;&nbsp;constructor;inv&nbsp;H1;inv&nbsp;H2;try&nbsp;congruence.<br/>
+&nbsp;&nbsp;-destruct&nbsp;(H&nbsp;t);constructor;congruence.<br/>
+Defined.<br/>
+*)</span><br/>
+</div>
+</div>
+<div id="footer">
+  Generated by <a href="http://coq.inria.fr/">coqdoc</a> and improved with <a href="https://github.com/tebbi/coqdocjs">CoqdocJS</a>
+</div>
+</div>
+</body>
+
+</html>

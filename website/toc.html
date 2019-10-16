@@ -1,0 +1,1906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<link href="coqdocjs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="coqdocjs.js"></script>
+</head>
+
+<body onload="document.getElementById('content').focus()">
+  <div id="header">
+    <span class="left">
+      <span class="modulename"> <script> document.write(document.title) </script> </span>
+    </span>
+
+    <span class="button" id="toggle-proofs"></span>
+
+    <span class="right">
+      <a href="../">Project Page</a>
+      <a href="./indexpage.html"> Index </a>
+      <a href="./toc.html"> Table of Contents </a>
+    </span>
+</div>
+    <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+    <div id="main">
+<div id="toc">
+<ul class="doclist">
+<li><a href="Undecidability.Shared.Prelim.html#lab1">Preliminaries</a>
+<ul class="doclist">
+<li><a href="Undecidability.Shared.Prelim.html#lab2">Lists</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab3">Tactics</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab4">Boolean propositions and decisions</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab5">Discrete types</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab6">Lists</a>
+<ul class="doclist">
+<li><a href="Undecidability.Shared.Prelim.html#lab7">Decisions for lists</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab8">Membership</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab9">Disjointness</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab10">Inclusion</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab11">Setoid rewriting with list inclusion and list equivalence</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab12">Filter</a>
+
+</li>
+<li><a href="Undecidability.Shared.Prelim.html#lab13">Element removal</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.sums.html#lab14">Shared libraries</a>
+<ul class="doclist">
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.sums.html#lab15">Finitary sums and products over monoids</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.binomial.html#lab16">Binomial theorem</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.bool_list.html#lab17">Bitwise operations on nat as list bool</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.bool_nat.html#lab18">Bitwise operations on nat</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.gcd.html#lab19">Euclidian division and Bezout's identity</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.prime.html#lab20">Prime numbers</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.power_decomp.html#lab21">Base p representation</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.bounded_quantification.html#lab22">Reification for bounded quantification</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.php.html#lab23">Pidgeon hole principle</a>
+
+</li>
+<li><a href="Undecidability.Shared.Libs.DLW.Utils.rel_iter.html#lab24">Iteration of binary relations</a>
+
+</li>
+<li><a href="Undecidability.Problems.PCP.html#lab25">Traditional Definition</a>
+
+</li>
+<li><a href="Undecidability.Problems.PCP.html#lab26">Inductive Definition</a>
+
+</li>
+<li><a href="Undecidability.Problems.PCP.html#lab27">Binary PCP</a>
+
+</li>
+<li><a href="Undecidability.Problems.PCP.html#lab28">Binary Post correspondence problem with indices</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.DecidableEnumerable.html#lab29">Decidability and Enumerability</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.DecidableEnumerable.html#lab30">Closure of enumerable types</a>
+
+</li>
+<li><a href="Undecidability.FOL.DecidableEnumerable.html#lab31">Enumerability of pairs of natural numbers</a>
+
+</li>
+<li><a href="Undecidability.FOL.DecidableEnumerable.html#lab32">Discrete types are closed under ...</a>
+
+</li>
+<li><a href="Undecidability.FOL.DecidableEnumerable.html#lab33">Enumerable types are closed under ...</a>
+
+</li>
+<li><a href="Undecidability.FOL.DecidableEnumerable.html#lab34">Enumerable predicates are closed under ...</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.Reductions.html#lab35">Many-One Reductions</a>
+
+</li>
+<li><a href="Undecidability.FOL.MarkovPost.html#lab36">Post's Theorem and Markov's Principle</a>
+
+</li>
+<li><a href="Undecidability.FOL.PCP.html#lab37">Post Correspondence Problem</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.PCP.html#lab38">Enumerability</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.FOL.html#lab39">First-Order Logic</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.FOL.html#lab40">Syntax</a>
+
+</li>
+<li><a href="Undecidability.FOL.FOL.html#lab41">Enumerability</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.Semantics.html#lab42">Tarski Semantics</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.Semantics.html#lab43">Variables and Substitutions</a>
+
+</li>
+<li><a href="Undecidability.FOL.Semantics.html#lab44">Interpretations</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.Deduction.html#lab45">Natural Deduction</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.Deduction.html#lab46">Definition</a>
+
+</li>
+<li><a href="Undecidability.FOL.Deduction.html#lab47">Soundness</a>
+
+</li>
+<li><a href="Undecidability.FOL.Deduction.html#lab48">Generalised Induction</a>
+
+</li>
+<li><a href="Undecidability.FOL.Deduction.html#lab49">Enumerability</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.Kripke.html#lab50">Kripke Semantics</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.Kripke.html#lab51">Kripke Models</a>
+
+</li>
+<li><a href="Undecidability.FOL.Kripke.html#lab52">Connection to Tarski Semantics</a>
+
+</li>
+<li><a href="Undecidability.FOL.Kripke.html#lab53">Soundness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_FOL.html#lab54">FOL Reductions</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.BPCP_FOL.html#lab55">Validity</a>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_FOL.html#lab56">Provability</a>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_FOL.html#lab57">Satisfiability</a>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_FOL.html#lab58">Corollaries</a>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_FOL.html#lab59">Non-Standard Model</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_IFOL.html#lab60">Intuitionistic FOL</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.BPCP_IFOL.html#lab61">Reductions</a>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_IFOL.html#lab62">Corollaries</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_CND.html#lab63">Classical Natural Deduction</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.BPCP_CND.html#lab64">Double Negation Translation</a>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_CND.html#lab65">Reduction</a>
+
+</li>
+<li><a href="Undecidability.FOL.BPCP_CND.html#lab66">Corollaries</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.FOL.Weakening.html#lab67">Weakening</a>
+
+</li>
+<li><a href="Undecidability.FOL.Infinite.html#lab68">Infinite Data Types</a>
+<ul class="doclist">
+<li><a href="Undecidability.FOL.Infinite.html#lab69">Definition of infinite and generating types</a>
+
+</li>
+<li><a href="Undecidability.FOL.Infinite.html#lab70">Infinite data types are generating</a>
+
+</li>
+<li><a href="Undecidability.FOL.Infinite.html#lab71">Generating data types are infinite</a>
+
+</li>
+<li><a href="Undecidability.FOL.Infinite.html#lab72">Generating data types are in bijection to nat</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.PCP.Definitions.html#lab73">Definitions</a>
+<ul class="doclist">
+<li><a href="Undecidability.PCP.Definitions.html#lab74">Post Correspondence Problem</a>
+
+</li>
+<li><a href="Undecidability.PCP.Definitions.html#lab75">String Rewriting</a>
+
+</li>
+<li><a href="Undecidability.PCP.Definitions.html#lab76">Post Grammars</a>
+
+</li>
+<li><a href="Undecidability.PCP.Definitions.html#lab77">Alphabets</a>
+<ul class="doclist">
+<li><a href="Undecidability.PCP.Definitions.html#lab78">Fresh symbols</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.PCP.SRH_SR.html#lab79">SRH to SR</a>
+
+</li>
+<li><a href="Undecidability.PCP.SR_MPCP.html#lab80">SR to MPCP</a>
+
+</li>
+<li><a href="Undecidability.PCP.MPCP_PCP.html#lab81">MPCP to PCP</a>
+
+</li>
+<li><a href="Undecidability.PCP.PCP_CFP.html#lab82">PCP to CFP</a>
+
+</li>
+<li><a href="Undecidability.PCP.PCP_CFI.html#lab83">PCP to CFI</a>
+
+</li>
+<li><a href="Undecidability.PCP.singleTM.html#lab84">TM to SRH</a>
+<ul class="doclist">
+<li><a href="Undecidability.PCP.singleTM.html#lab85">Definition of single-tape Turing Machines</a>
+
+</li>
+<li><a href="Undecidability.PCP.TM_SRH.html#lab86">TM to SR with finite types</a>
+
+</li>
+<li><a href="Undecidability.PCP.TM_SRH.html#lab87">SR with finite types to SR</a>
+
+</li>
+<li><a href="Undecidability.PCP.TM_SRH.html#lab88">TM to SRH'</a>
+
+</li>
+<li><a href="Undecidability.PCP.TM_SRH.html#lab89">SRH' to SRH</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.PCP.Post_CFG.html#lab90">Post grammars are context-free</a>
+
+</li>
+<li><a href="Undecidability.PCP.CFP_CFI.html#lab91">CFP to CFI</a>
+<ul class="doclist">
+<li><a href="Undecidability.ILL.PCP_BPCP.html#lab92">PCP reduces to BPCP</a>
+
+</li>
+<li><a href="Undecidability.ILL.BPCP_iBPCP.html#lab93">BPCP reduces to iBPCP</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.ILL.Code.sss.html#lab94">Code</a>
+<ul class="doclist">
+<li><a href="Undecidability.ILL.Code.sss.html#lab95">Syntax</a>
+
+</li>
+<li><a href="Undecidability.ILL.Code.sss.html#lab96">Semantics</a>
+
+</li>
+<li><a href="Undecidability.ILL.Code.sss.html#lab97">Compisitional Reasoning over Subcode</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.ILL.Code.compiler.html#lab98">A certified low-level compiler</a>
+
+</li>
+<li><a href="Undecidability.ILL.Bsm.bsm_defs.html#lab99">Binary Stack Machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.ILL.Bsm.bsm_defs.html#lab100">Semantics for BSM</a>
+
+</li>
+<li><a href="Undecidability.ILL.Bsm.bsm_pcp.html#lab101">iBPCP reduces to BSM</a>
+
+</li>
+<li><a href="Undecidability.ILL.Code.compiler_correction.html#lab102">Semantic Correctness of Compiled Code</a>
+
+</li>
+<li><a href="Undecidability.ILL.Code.compiler_correction.html#lab103">A Syntactically Correct Compiler</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.ILL.Mm.mm_defs.html#lab104">Minsky Machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.ILL.Mm.mm_defs.html#lab105">Semantics for MM</a>
+
+</li>
+<li><a href="Undecidability.ILL.Mm.mm_utils.html#lab106">Simulating Binary Stacks with numbers</a>
+
+</li>
+<li><a href="Undecidability.ILL.Mm.mm_comp.html#lab107">BSM recues to MM</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.ILL.Ll.ill.html#lab108">Intuionistic Linear Logic</a>
+<ul class="doclist">
+<li><a href="Undecidability.ILL.Ll.eill.html#lab109">eILL reduces to ILL</a>
+
+</li>
+<li><a href="Undecidability.ILL.Ll.eill_mm.html#lab110">MM reduces to eILL</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.ILL.UNDEC.html#lab111">List of all results</a>
+
+</li>
+<li><a href="Undecidability.ILL.UNDEC.html#lab112">Formal Undecidability</a>
+
+</li>
+<li><a href="Undecidability.MM.mma_defs.html#lab113">Alternate Minsky Machines such that two counters are enough for undec</a>
+<ul class="doclist">
+<li><a href="Undecidability.MM.mma_defs.html#lab114">Semantics for MM2 based on vectors</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.H10.Fractran.mm_no_self.html#lab115">Minsky machines to FRACTRAN programs</a>
+<ul class="doclist">
+<li><a href="Undecidability.H10.Fractran.mm_no_self.html#lab116">Removal of self-loops in MMs</a>
+
+</li>
+<li><a href="Undecidability.H10.Fractran.prime_seq.html#lab117">Two infinite sequences of primes</a>
+
+</li>
+<li><a href="Undecidability.H10.Fractran.fractran_defs.html#lab118">Definition of FRACTRAN</a>
+
+</li>
+<li><a href="Undecidability.H10.Fractran.mm_fractran.html#lab119">Compiler from MM to FRACTRAN</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.H10.ArithLibs.Zp.html#lab120">Arithmetic libraries for Matiyasevich's theorems</a>
+<ul class="doclist">
+<li><a href="Undecidability.H10.ArithLibs.Zp.html#lab121">Modular arithmetic</a>
+
+</li>
+<li><a href="Undecidability.H10.ArithLibs.matrix.html#lab122">Matric computation</a>
+
+</li>
+<li><a href="Undecidability.H10.ArithLibs.luca.html#lab123">Luca's theorem</a>
+
+</li>
+<li><a href="Undecidability.H10.Matija.alpha.html#lab124">Solutions of Pell's equation</a>
+
+</li>
+<li><a href="Undecidability.H10.Matija.expo_diophantine.html#lab125">Exponentiation is Diophantine</a>
+
+</li>
+<li><a href="Undecidability.H10.Matija.cipher.html#lab126">Sparse ciphers</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.H10.Dio.dio_logic.html#lab127">Object-level representation of Diophantine equations</a>
+<ul class="doclist">
+<li><a href="Undecidability.H10.Dio.dio_logic.html#lab128">Diophantine logic</a>
+
+</li>
+<li><a href="Undecidability.H10.Dio.dio_elem.html#lab129">Elementary diophantine constraints</a>
+
+</li>
+<li><a href="Undecidability.H10.Dio.dio_single.html#lab130">Single Diophantine equations</a>
+
+</li>
+<li><a href="Undecidability.H10.Dio.dio_expo.html#lab131">Object-level encoding of exponential</a>
+
+</li>
+<li><a href="Undecidability.H10.Dio.dio_binary.html#lab132">Object-level encoding of bounded universal quantification I</a>
+
+</li>
+<li><a href="Undecidability.H10.Dio.dio_cipher.html#lab133">Object-level encoding of bounded universal quantification II</a>
+
+</li>
+<li><a href="Undecidability.H10.Dio.dio_bounded.html#lab134">Object-level encoding of bounded universal quantification III</a>
+
+</li>
+<li><a href="Undecidability.H10.Dio.dio_rt_closure.html#lab135">Reflexive transitive closure is Diophantine</a>
+
+</li>
+<li><a href="Undecidability.H10.Fractran.fractran_dio.html#lab136">FRACTRAN termination is Diophantine</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.H10.HALT_MM.html#lab137">Main undecidability results and DPRM theorem</a>
+<ul class="doclist">
+<li><a href="Undecidability.H10.HALT_MM.html#lab138">HALT reduces to MM</a>
+
+</li>
+<li><a href="Undecidability.H10.MM_FRACTRAN.html#lab139">MM reduces to FRACTRAN</a>
+
+</li>
+<li><a href="Undecidability.H10.FRACTRAN_DIO.html#lab140">FRACTRAN reduces to Diophantine logic</a>
+
+</li>
+<li><a href="Undecidability.H10.H10.html#lab141">Hilbert's tenth problem is undecidable</a>
+
+</li>
+<li><a href="Undecidability.H10.DPRM.html#lab142">The DPRM theorem</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Prelim.html#lab143">Basis for the full TM library</a>
+
+</li>
+<li><a href="Undecidability.TM.Relations.html#lab144">Relations</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Relations.html#lab145">Relational operators on labelled relations</a>
+
+</li>
+<li><a href="Undecidability.TM.Relations.html#lab146">Relations over Vectors</a>
+
+</li>
+<li><a href="Undecidability.TM.Relations.html#lab147">Reflexive transitive closure and relational power</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab148">Definition of Multi-Tape Turing Machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.TM.html#lab149">Definition of the tape</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab150">Definition of moves</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.TM.html#lab151">Rewriting Lemmas</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab152">Machine step</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab153">Rewriting tactics</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab154">Nop Action</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab155">Mirror tapes</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab156">Helping functions for tapes</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab157">Mapping tapes</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab158">Lemmas about <span class="inlinecode"><span class="id" title="var">tape_move_left'</span></span> and <span class="inlinecode"><span class="id" title="var">tape_move_right'</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab159">Definition of Multi-Tape Turing Machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.TM.html#lab160">Configurations of TMs</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab161">Machine execution</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab162">Realisation</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab163">Termination/Runtime</a>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab164">Canonical relations</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.TM.html#lab165">Automation of the generation of relations</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Basic.Null.html#lab166">0-tape Turing machine that does nothing.</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Basic.Null.html#lab167">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Basic.Mono.html#lab168">Basic 1-Tape Machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Basic.Mono.html#lab169">Helper functions</a>
+
+</li>
+<li><a href="Undecidability.TM.Basic.Mono.html#lab170">Do a single action</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Basic.Mono.html#lab171">Derived Machines</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Basic.Mono.html#lab172">Read a symbol</a>
+
+</li>
+<li><a href="Undecidability.TM.Basic.Mono.html#lab173">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Basic.Duo.html#lab174">Primitive Two-tape machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Basic.Duo.html#lab175">Read two symbols</a>
+
+</li>
+<li><a href="Undecidability.TM.Basic.Duo.html#lab176">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.Combinators.html#lab177">Combinators</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Combinators.Combinators.html#lab178">Simple Combinators</a>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.Combinators.html#lab179">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.Switch.html#lab180">Switch Combinator</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Combinators.While.html#lab181">Correctness of <span class="inlinecode"><span class="id" title="var">While</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.While.html#lab182">Termination of <span class="inlinecode"><span class="id" title="var">While</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.While.html#lab183">(Co-) Induction Principle for Correctness (Running Time) of <span class="inlinecode"><span class="id" title="var">While</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.StateWhile.html#lab184">Correctness of <span class="inlinecode"><span class="id" title="var">StateWhile</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.StateWhile.html#lab185">Termination of <span class="inlinecode"><span class="id" title="var">StateWhile</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.StateWhile.html#lab186">(Co-) Induction Principle for Correctness (Running Time) of <span class="inlinecode"><span class="id" title="var">StateWhile</span></span></a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Combinators.Mirror.html#lab187">Mirror Operator</a>
+
+</li>
+<li><a href="Undecidability.TM.Lifting.LiftTapes.html#lab188">Tapes-Lift</a>
+
+</li>
+<li><a href="Undecidability.TM.Lifting.LiftTapes.html#lab189">Tactic Support</a>
+
+</li>
+<li><a href="Undecidability.TM.Lifting.LiftAlphabet.html#lab190">Alphabet-Lift</a>
+
+</li>
+<li><a href="Undecidability.TM.Compound.TMTac.html#lab191">Tactics that help verifying complex machines</a>
+
+</li>
+<li><a href="Undecidability.TM.Compound.Multi.html#lab192">Simple compound multi-tape Machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Compound.Multi.html#lab193">Nop</a>
+
+</li>
+<li><a href="Undecidability.TM.Compound.Multi.html#lab194">Diverge</a>
+
+</li>
+<li><a href="Undecidability.TM.Compound.Multi.html#lab195">Move two tapes</a>
+
+</li>
+<li><a href="Undecidability.TM.Compound.Multi.html#lab196">Copy Symbol</a>
+
+</li>
+<li><a href="Undecidability.TM.Compound.Multi.html#lab197">Read Char</a>
+
+</li>
+<li><a href="Undecidability.TM.Compound.Multi.html#lab198">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Compound.MoveToSymbol.html#lab199">Move to a symbol and translate read symbols</a>
+
+</li>
+<li><a href="Undecidability.TM.Compound.CopySymbols.html#lab200">Copy Symbols from t0 to t1</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Compound.Shift.html#lab201">Shift to left</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Compound.Compare.html#lab202">Compare two tapes (from left to right) until a symbol is reached</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.Code.html#lab203">Codable Class</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CodeTM.html#lab204">Value-Containing</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.CodeTM.html#lab205">Right tapes</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.ChangeAlphabet.html#lab206">Alphabet-lift for "programmed" Turing Machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.ChangeAlphabet.html#lab207">Definition of the lifted machine</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.ChangeAlphabet.html#lab208">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.Copy.html#lab209">Copying Machines and Helper functions for verifying machines using <span class="inlinecode"><span class="id" title="var">CopySymbols</span></span> ane <span class="inlinecode"><span class="id" title="var">MoveToSymbol</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CompareValue.html#lab210">Compare two values</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.ProgrammingTools.html#lab211">All tools for programming Turing machines</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseNat.html#lab212">Constructor and Deconstructor Machines for Natural Numbers</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.CaseNat.html#lab213">Deconstructor</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseNat.html#lab214">Constructors</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseNat.html#lab215">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseSum.html#lab216">Constructor and Deconstructor Machines for Sum Types and Option Types</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.CaseSum.html#lab217">Deconstructor for Sum Types</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseSum.html#lab218">Constructors for Sum Types</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseSum.html#lab219">Tactic Support for Sum Types</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseSum.html#lab220">Deconstructor for Option Types</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseSum.html#lab221">Constructors for Option Types</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseSum.html#lab222">Tactic Support for Option Types</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseList.html#lab223">Constructor and Deconstructor Machines for Lists</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.CaseList.html#lab224">Deconstructor</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.CaseList.html#lab225">Corectness</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseList.html#lab226">Termination</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseList.html#lab227"><span class="inlinecode"><span class="id" title="var">IsNil</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseList.html#lab228">Constructors</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.CaseList.html#lab229"><span class="inlinecode"><span class="id" title="var">nil</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseList.html#lab230"><span class="inlinecode"><span class="id" title="var">cons</span></span></a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseList.html#lab231">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.CaseFin.html#lab232">Constructors and Deconstructors for Finite Types</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CasePair.html#lab233">Constructors and Deconstructors for Pair Types</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.CasePair.html#lab234">Deconstructor</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CasePair.html#lab235">Constructor</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CasePair.html#lab236">Compatibility of running time and size functions with mapping of encodings</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.CasePair.html#lab237">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.NatTM.html#lab238">Machines that compte natural functions</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.NatTM.html#lab239">Addition</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.NatTM.html#lab240">Correctness of <span class="inlinecode"><span class="id" title="keyword">Add</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Code.NatTM.html#lab241">Termination of <span class="inlinecode"><span class="id" title="keyword">Add</span></span></a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.NatTM.html#lab242">Multiplication</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.NatTM.html#lab243">Correctness of <span class="inlinecode"><span class="id" title="var">Mult</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Code.NatTM.html#lab244">Termination of Mult</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.ListTM.html#lab245">Machines that compute list functions</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.ListTM.html#lab246">Implementation of <span class="inlinecode"><span class="id" title="var">nth_error</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Code.ListTM.html#lab247">Other Implementation of <span class="inlinecode"><span class="id" title="var">nth_error</span></span></a>
+
+</li>
+<li><a href="Undecidability.TM.Code.ListTM.html#lab248">Append</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.ListTM.html#lab249">Length</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.EncodeBinNumbers.html#lab250">Encoding for binary numbers</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.BinNumbers.PosDefinitions.html#lab251">General definitions and lemmas on binary numbers</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosPointers.html#lab252">Pointer bookkeeping for machines using (positive) binary numbers</a>
+<ul class="doclist">
+<li><ul class="doclist">
+<li><a href="Undecidability.TM.Code.BinNumbers.PosPointers.html#lab253">Extensionality lemma and tactics</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosHelperMachines.html#lab254">Helper Machines for positive numbers</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosHelperMachines.html#lab255">Read the current symbol</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosHelperMachines.html#lab256">Read the two current symbols</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.BinNumbers.PosHelperMachines.html#lab257">Go from some bit to the HSB</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosHelperMachines.html#lab258">Go to the LSB (if it exists)</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosHelperMachines.html#lab259">Setting bits and moving</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosHelperMachines.html#lab260">Overwrite the HSB</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosIncrementTM.html#lab261">Increment</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosCompareTM.html#lab262">Machine for comparing two <span class="inlinecode"><span class="id" title="var">positive</span></span> binary numbers</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.BinNumbers.PosCompareTM.html#lab263">Maximum</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosShiftTM.html#lab264">Machines for shifting <span class="inlinecode"><span class="id" title="var">positive</span></span> binary numbers</a>
+<ul class="doclist">
+<li><ul class="doclist">
+<li><a href="Undecidability.TM.Code.BinNumbers.PosShiftTM.html#lab265">Machine for Shifting Left</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosShiftTM.html#lab266">Machine for shifting a number <span class="inlinecode"><span class="id" title="var">y</span></span> <span class="inlinecode"><span class="id" title="var">pos_size</span></span> <span class="inlinecode"><span class="id" title="var">x</span></span>-times left.</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosShiftTM.html#lab267">Check whether the number is one</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosShiftTM.html#lab268">Machine for Shifting Left</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosShiftTM.html#lab269">Machine for shifting a number <span class="inlinecode"><span class="id" title="var">y</span></span> <span class="inlinecode"><span class="id" title="var">pos_size</span></span> <span class="inlinecode"><span class="id" title="var">x</span></span> times left.</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosAddTM.html#lab270">Addition for <span class="inlinecode"><span class="id" title="var">positive</span></span> numbers</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosAddTM.html#lab271">Addition Machine</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosAddTM.html#lab272">Add a number onto a register</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosMultTM.html#lab273">Multiplication of <span class="inlinecode"><span class="id" title="var">positive</span></span> numbers</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.BinNumbers.PosMultTM.html#lab274">Tail-recursive multiplication function</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.PosMultTM.html#lab275">Multiplication Machine</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.NTM.html#lab276">Machines on <span class="inlinecode"><span class="id" title="var">N</span></span> (binary natural numbers)</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.Code.BinNumbers.NTM.html#lab277">Write a number</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.NTM.html#lab278">Constructor</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.NTM.html#lab279">Deconstructor</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.NTM.html#lab280">Increment</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.NTM.html#lab281">Addition</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.NTM.html#lab282">Multiplication</a>
+
+</li>
+<li><a href="Undecidability.TM.Code.BinNumbers.NTM.html#lab283">Tactic Support</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.Univ.LookupAssociativeListTM.html#lab284">Lookup an entry in an associative list</a>
+
+</li>
+<li><a href="Undecidability.TM.Univ.StepTM.html#lab285">Universal Turing Machine</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.PrettyBounds.html#lab286">Definitions and Automation for PrettyBounds</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.PrettyBounds.html#lab287">Automation</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.MaxList.html#lab288">Maximum element in a list</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.PrettyBounds.MaxList.html#lab289">Basic lemmas about upper bounds</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.MaxList.html#lab290">Tail Recursive Definition</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.MaxList.html#lab291">Definition of the maximum of a list</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.MaxList.html#lab292">Maximum of a function</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.BaseCode.html#lab293">PrettyBounds for Machines in TM/Code</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.PrettyBounds.BaseCode.html#lab294">Copy steps functions</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.PrettyBounds.BaseCode.html#lab295">CasePair</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.BaseCode.html#lab296">CaseSum and CaseOption</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.BaseCode.html#lab297">CompareValue(s)</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.UnivBounds.html#lab298">PrettyBound for Univ</a>
+<ul class="doclist">
+<li><ul class="doclist">
+<li><a href="Undecidability.TM.PrettyBounds.UnivBounds.html#lab299">Assoc List Lookup</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.M2MBounds.html#lab300">Bounds For M2M</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.BaseCodeSpace.html#lab301">Case Study: Place usage for list machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.TM.PrettyBounds.BaseCodeSpace.html#lab302">Common combinations</a>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.BaseCodeSpace.html#lab303">Simple List functions</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.TM.PrettyBounds.UnivSpaceBounds.html#lab304">Space Analysis for Univ</a>
+
+</li>
+<li><a href="Undecidability.TM.MultiUnivTimeSpaceSimulation.html#lab305">Theorem: Univ can simulate multi-tape Turing machines with polynominal time and linear space overhead</a>
+
+</li>
+<li><a href="Undecidability.L.Prelim.MoreBase.html#lab306">Preliminaries</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Prelim.ARS.html#lab307">Abstract Reduction Systems</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.L.html#lab308">The call-by-value lambda calculus L</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.L.html#lab309">Syntax</a>
+
+</li>
+<li><a href="Undecidability.L.L.html#lab310">Reduction</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Tactics.Computable.html#lab311">Correctness and time bounds</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.Computable.html#lab312">Correctness</a>
+
+</li>
+<li><a href="Undecidability.L.Tactics.ComputableTime.html#lab313">Time bounds</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Tactics.LTactics.html#lab314">Certifying extraction from Coq to L with time bounds</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.Extract.html#lab315">Extraction</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.Extract.html#lab316">Generation of Scott encodings</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.Extract.html#lab317">Examples</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Tactics.Extract.html#lab318">Generation of constructors</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.Extract.html#lab319">Examples</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Tactics.Extract.html#lab320">Extracting terms from Coq to L</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.Extract.html#lab321">Examples</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Tactics.GenEncode.html#lab322">Generation of encoding functions</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Tactics.Lproc.html#lab323">Symbolic simplification for L</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.Lproc.html#lab324">Lproc</a>
+
+</li>
+<li><a href="Undecidability.L.Tactics.Lbeta.html#lab325">Lbeta: symbolic beta reduction</a>
+
+</li>
+<li><a href="Undecidability.L.Tactics.Reflection.html#lab326">Reflexted closure calculus</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.LClos.html#lab327">Closure calculus</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Tactics.LClos_Eval.html#lab328">Closure calculus interpreter</a>
+
+</li>
+<li><a href="Undecidability.L.Tactics.Lrewrite.html#lab329">Lrewrite: simplification with correctness statements</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Tactics.ComputableTactics.html#lab330">Tactics proving correctness</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Tactics.ComputableDemo.html#lab331">Interactive Demo</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Datatypes.LUnit.html#lab332">Encodings and extracted basic functions</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Datatypes.LUnit.html#lab333">Encoding of unit</a>
+
+</li>
+<li><a href="Undecidability.L.Datatypes.LBool.html#lab334">Encoding of booleans</a>
+
+</li>
+<li><a href="Undecidability.L.Datatypes.Lists.html#lab335">Encoding of lists</a>
+
+</li>
+<li><a href="Undecidability.L.Datatypes.LNat.html#lab336">Encoding of natural numbers</a>
+
+</li>
+<li><a href="Undecidability.L.Datatypes.LOptions.html#lab337">Encoding of option type</a>
+
+</li>
+<li><a href="Undecidability.L.Datatypes.LProd.html#lab338">Encoding of pairs</a>
+
+</li>
+<li><a href="Undecidability.L.Datatypes.LTerm.html#lab339">Encoding for L-terms</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Functions.Equality.html#lab340">Extracted Functions</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Functions.Equality.html#lab341">Extracted equality of encoded natural numbers</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Equality.html#lab342">Extracted equality of encoded terms</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Encoding.html#lab343">Extracted encoding of natural numbers</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Encoding.html#lab344">Extracted term encoding</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Proc.html#lab345">Decidabiity of closedness, boundedness and procness</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Size.html#lab346">Extracted size of terms</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Subst.html#lab347">Extracted substitution on terms</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Eval.html#lab348">Extracted step-indexed L-interpreter</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Eval.html#lab349">Computability of full evaluation</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.EnumInt.html#lab350">Enumeratibility of L-terms</a>
+
+</li>
+<li><a href="Undecidability.L.Functions.Ackermann.html#lab351">Computability of Ackermann</a>
+
+</li>
+<li><a href="Undecidability.L.TM.TMEncoding.html#lab352">Extraction of Turing Machine interpreter</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.TM.TMEncoding.html#lab353">Encoding finite types</a>
+
+</li>
+<li><a href="Undecidability.L.TM.TMEncoding.html#lab354">Encoding vectors</a>
+
+</li>
+<li><a href="Undecidability.L.TM.TMEncoding.html#lab355">Encoding Tapes</a>
+
+</li>
+<li><a href="Undecidability.L.TM.TMEncoding.html#lab356">Computability of transition relation</a>
+
+</li>
+<li><a href="Undecidability.L.TM.TMEncoding.html#lab357">Computability of step-ndexed interpreter</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Reductions.TM_to_L.html#lab358">Reducing halting problem for TMs to halting problem for L</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Reductions.H10_to_L.html#lab359">Diophantine Equations</a>
+
+</li>
+<li><a href="Undecidability.L.Complexity.ResourceMeasures.html#lab360">Resource Measures</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Complexity.ResourceMeasures.html#lab361">Big-Step Time Measure</a>
+
+</li>
+<li><a href="Undecidability.L.Complexity.ResourceMeasures.html#lab362">Leftmost reduction</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Complexity.ResourceMeasures.html#lab363">Small-Step_Lm Time Measure</a>
+
+</li>
+<li><a href="Undecidability.L.Complexity.ResourceMeasures.html#lab364">Small-Step_Lm Space Measure</a>
+
+</li>
+<li><a href="Undecidability.L.Complexity.ResourceMeasures.html#lab365">Big-Step_Lm Space Measure</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.Programs.html#lab366">Abstract L machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.AbstractMachines.Programs.html#lab367">Encoding Terms as Programs</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.AbstractMachines.Programs.html#lab368">Program size</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.Programs.html#lab369">Programm Decomposition</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.Programs.html#lab370">Program Substitution</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.Programs.html#lab371">Injectivity of Programm Encoding</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.AbstractSubstMachine.html#lab372">Abstract Substitution Machine</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.AbstractMachines.AbstractSubstMachine.html#lab373">Reduction Rules</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.AbstractSubstMachine.html#lab374">Time</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.AbstractSubstMachine.html#lab375">Space</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.AbstractHeapMachine.html#lab376">Abstract Heap Machine</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.AbstractMachines.AbstractHeapMachine.html#lab377">Heaps</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.AbstractHeapMachine.html#lab378">Reduction Rules</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.AbstractHeapMachine.html#lab379">Unfolding</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.AbstractHeapMachine.html#lab380">Time</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.AbstractHeapMachine.html#lab381">Space</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.UnfoldHeap.html#lab382">Bonus:  Unfolding on Programs</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.FunctionalDefinitions.html#lab383">Functional definitions of the abstract machines</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.AbstractMachines.FunctionalDefinitions.html#lab384">TODO: Size-aware space machine</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.Computable.Shared.html#lab385">Computability in L</a>
+<ul class="doclist">
+<li><ul class="doclist">
+<li><a href="Undecidability.L.AbstractMachines.Computable.Shared.html#lab386">Encoding for Tokens</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.Computable.HeapMachine.html#lab387">Heap Machine</a>
+
+</li>
+<li><a href="Undecidability.L.AbstractMachines.Computable.SubstMachine.html#lab388">TODO: Subst Machine</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Computability.Acceptability.html#lab389">Definition of L-acceptability</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Acceptability.html#lab390">Properties of acceptance</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Acceptability.html#lab391">L-acceptable predicates are closed under conjunction and disjunction</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Acceptability.html#lab392">L-ecidable predicates are L-acceptable (and their complement too)</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Decidability.html#lab393">Definition of L-decidability</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Decidability.html#lab394">Complement, conj and disj of predicates</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Decidability.html#lab395">Deciders for complement, conj and disj of ldec predicates</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Decidability.html#lab396">L-decidable predicates are closed under complement, conj and disj</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Fixpoints.html#lab397">First Fixed Point Theorem</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Fixpoints.html#lab398">Second Fixed Point Theorem</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Por.html#lab399">Definition of parallel or</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Rice.html#lab400">The self halting problem is not L-acceptable</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Rice.html#lab401">Rice's Theorem</a>
+<ul class="doclist">
+<li><a href="Undecidability.L.Computability.Rice.html#lab402">Rice's Theorem, classical</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.L.Computability.Rice.html#lab403">Applications of Rice's Theorem</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Rice.html#lab404">Rice's Theorem, classical, on combinators</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Scott.html#lab405">Scott's Theorem</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Scott.html#lab406">Applications of Scott's Theorem</a>
+
+</li>
+<li><a href="Undecidability.L.Computability.Seval.html#lab407">Step indexed evaluation</a>
+
+</li>
+<li><a href="Undecidability.LAM.Prelims.html#lab408">Properties of star:</a>
+
+</li>
+<li><a href="Undecidability.LAM.LM_heap_def.html#lab409">Semantics of the Heap Machine</a>
+<ul class="doclist">
+<li><a href="Undecidability.LAM.LM_heap_def.html#lab410">Auxilliary Definitions</a>
+<ul class="doclist">
+<li><a href="Undecidability.LAM.LM_heap_def.html#lab411">Functional Characterisation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.LAM.LM_heap_correct.html#lab412">Direct correctness proof</a>
+<ul class="doclist">
+<li><a href="Undecidability.LAM.LM_heap_correct.html#lab413">Definition compile/representation</a>
+
+</li>
+<li><a href="Undecidability.LAM.LM_heap_correct.html#lab414">Correctnes Heap-interaction</a>
+
+</li>
+<li><a href="Undecidability.LAM.LM_heap_correct.html#lab415">Unfolding</a>
+
+</li>
+<li><a href="Undecidability.LAM.LM_heap_correct.html#lab416">BS correctness</a>
+
+</li>
+<li><a href="Undecidability.LAM.LM_heap_correct.html#lab417">BS soundness</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.LAM.TM.Alphabets.html#lab418">Alphabets</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.CaseCom.html#lab419">Constructors and Deconstructors for Comens</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.LookupTM.html#lab420">Heap Lookup</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.JumpTargetTM.html#lab421">Implementation of <span class="inlinecode"><span class="id" title="var">ϕ</span></span> (aka SplitBody)</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.StepTM.html#lab422">Step Machine of the Heap Machine Simulator</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.HaltingProblem.html#lab423">Reduction of the Halting Problem of the Heap Machine to the Halting Problem of Turing Machines</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.LMBounds.html#lab424">PrettyBounds for LM</a>
+<ul class="doclist">
+<li><a href="Undecidability.LAM.TM.LMBounds.html#lab425">LM step functions</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.LMBounds.html#lab426">Sizes for (atomic) commands</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.LMBounds.html#lab427">JumpTarget</a>
+
+</li>
+<li><a href="Undecidability.LAM.TM.LMBounds.html#lab428">LM Lookup</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.axioms.html#lab429">Axiomatic Assumptions</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.axioms.html#lab430">Functional Extensionality</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.syntax.html#lab431">Syntax</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.calculus.syntax.html#lab432">Atoms</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.syntax.html#lab433">Applicative Head</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.syntax.html#lab434">Type Functions</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.syntax.html#lab435">Free Variables</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.semantics.html#lab436">Semantics</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.calculus.semantics.html#lab437">Compatibility Properties</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.semantics.html#lab438">Normality Characterisation</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.semantics.html#lab439">Inversion Lemmas</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.equivalence.html#lab440">Equational Theory</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.calculus.equivalence.html#lab441">Compatibility Properties</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.equivalence.html#lab442">Injectivity Properties</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.equivalence.html#lab443">Disjointness Properties</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.equivalence.html#lab444">Huet Definition</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.typing.html#lab445">Simple Typing</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.calculus.typing.html#lab446">Preservation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.order.html#lab447">Order Typing</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.calculus.order.html#lab448">Order of Types</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.order.html#lab449">Order Typing</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.order.html#lab450">Preservation Order Typing</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab451">Terms Extension</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab452">Typing</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab453">Semantics</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab454">Big Arrow</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab455">List Abstraction and Application</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab456">Substitutions and Renaming</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab457">Compatibility Properties</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab458">Equivalence Inversions</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab459">Normality</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab460">List Operators Typing</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.terms_extension.html#lab461">Utilities</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.confluence.html#lab462">Confluence</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.normalisation.html#lab463">Weak Normalisation</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.calculus.normalisation.html#lab464">Logical Relations</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.normalisation.html#lab465">Semantic Soundness</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.normalisation.html#lab466">Termination</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.evaluator.html#lab467">Evaluator</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.calculus.evaluator.html#lab468">Step Indexed Interpreter</a>
+
+</li>
+<li><a href="Undecidability.HOU.calculus.evaluator.html#lab469">Evaluator</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.unification.higher_order_unification.html#lab470">Higher-Order Unification</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.unification.higher_order_unification.html#lab471">Normalisation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.unification.systemunification.html#lab472">System Unification</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.unification.systemunification.html#lab473">Normalisation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.unification.nth_order_unification.html#lab474">Nth-Order Unification</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.unification.nth_order_unification.html#lab475">Nth-Order System Unification</a>
+
+</li>
+<li><a href="Undecidability.HOU.unification.nth_order_unification.html#lab476">Nth-Order Normalisation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.unification.enumerability.html#lab477">Enumerability</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.unification.enumerability.html#lab478">Terms, Types and Contexts</a>
+
+</li>
+<li><a href="Undecidability.HOU.unification.enumerability.html#lab479">Typing Proofs</a>
+
+</li>
+<li><a href="Undecidability.HOU.unification.enumerability.html#lab480">Substitutions</a>
+
+</li>
+<li><a href="Undecidability.HOU.unification.enumerability.html#lab481">Higher-Order Unification</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.pcp.html#lab482">PCP and MPCP</a>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.encoding.html#lab483">Third-Order Encoding</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.third_order.encoding.html#lab484">Encoding Typing</a>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.encoding.html#lab485">Encoding Properities</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.third_order.encoding.html#lab486">Reduction</a>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.encoding.html#lab487">Substitution</a>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.encoding.html#lab488">Injectivity</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.simplified.html#lab489">Simplified Reduction</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.third_order.simplified.html#lab490">Reduction Function</a>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.simplified.html#lab491">Forward Direction</a>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.simplified.html#lab492">Backward Direction</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.huet.html#lab493">Huet Reduction</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.third_order.huet.html#lab494">Reduction Function</a>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.huet.html#lab495">Forward Direction</a>
+
+</li>
+<li><a href="Undecidability.HOU.third_order.huet.html#lab496">Backward Direction</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.dowek.encoding.html#lab497">Higher-Order Motivation</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.second_order.dowek.encoding.html#lab498">Church Numerals</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.dowek.encoding.html#lab499">Characteristic Equation</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.dowek.encoding.html#lab500">Diophantine Equations Encoding</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.dowek.encoding.html#lab501">Reduction Function</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.dowek.reduction.html#lab502">Equivalences</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.dowek.reduction.html#lab503">Forward Direction</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.dowek.reduction.html#lab504">Backward Direction</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.encoding.html#lab505">Second-Order Realisation</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.second_order.goldfarb.encoding.html#lab506">Goldfarb Numerals</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.encoding.html#lab507">Encoding</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.encoding.html#lab508">Characteristic Equation</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.encoding.html#lab509">Variables</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.encoding.html#lab510">Diophantine Equations Encoding</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.encoding.html#lab511">Reduction Function</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.reduction.html#lab512">Equivalences</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.second_order.goldfarb.reduction.html#lab513">Multiplication</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.reduction.html#lab514">Forward Direction</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.reduction.html#lab515">Backward Direction</a>
+
+</li>
+<li><a href="Undecidability.HOU.second_order.goldfarb.motivation.html#lab516">Multiplication Motivation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.concon.conservativity.html#lab517">Conservativity</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.concon.conservativity.html#lab518">Constant Operations</a>
+
+</li>
+<li><a href="Undecidability.HOU.concon.conservativity.html#lab519">Inhabiting Types</a>
+
+</li>
+<li><a href="Undecidability.HOU.concon.conservativity.html#lab520">Conservativity</a>
+
+</li>
+<li><a href="Undecidability.HOU.concon.conservativity.html#lab521">Consequences</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.concon.constants.html#lab522">Constants</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.concon.constants.html#lab523">Adding Constants</a>
+
+</li>
+<li><a href="Undecidability.HOU.concon.constants.html#lab524">Removing Constants</a>
+
+</li>
+<li><a href="Undecidability.HOU.concon.constants.html#lab525">Goldfarb sharp</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.concon.enumerability.html#lab526">Enumerability from Conservativity</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.concon.enumerability.html#lab527">Nth-Order Unification</a>
+
+</li>
+<li><a href="Undecidability.HOU.concon.enumerability.html#lab528">System Unification</a>
+
+</li>
+<li><a href="Undecidability.HOU.concon.enumerability.html#lab529">Nth-Order System Unification</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab530">First-Order Unification</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.firstorder.html#lab531">Singlepoint Substitution</a>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab532">Lambda-Freeness</a>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab533">Simplified First-Order Unification</a>
+<ul class="doclist">
+<li><a href="Undecidability.HOU.firstorder.html#lab534">Term Decompositon</a>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab535">Unification Relation</a>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab536">Computability</a>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab537">Soundness</a>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab538">Completeness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab539">Retyping</a>
+
+</li>
+<li><a href="Undecidability.HOU.firstorder.html#lab540">Full First-Order Unification</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="Undecidability.Reductions.L_to_mTM.html#lab541">L to TM</a>
+
+</li>
+</ul>
+</div>
+</div>
+<div id="footer">
+  Generated by <a href="http://coq.inria.fr/">coqdoc</a> and improved with <a href="https://github.com/tebbi/coqdocjs">CoqdocJS</a>
+</div>
+</div>
+</body>
+
+</html>

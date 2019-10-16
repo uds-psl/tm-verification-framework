@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<link href="coqdocjs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="coqdocjs.js"></script>
+</head>
+
+<body onload="document.getElementById('content').focus()">
+  <div id="header">
+    <span class="left">
+      <span class="modulename"> <script> document.write(document.title) </script> </span>
+    </span>
+
+    <span class="button" id="toggle-proofs"></span>
+
+    <span class="right">
+      <a href="../">Project Page</a>
+      <a href="./indexpage.html"> Index </a>
+      <a href="./toc.html"> Table of Contents </a>
+    </span>
+</div>
+    <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+    <div id="main">
+<div class="code">
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.TM.Code.CodeTM.html#"><span class="id" title="library">CodeTM</span></a> <a class="idref" href="Undecidability.TM.Code.Copy.html#"><span class="id" title="library">Copy</span></a> <a class="idref" href="Undecidability.TM.Code.ChangeAlphabet.html#"><span class="id" title="library">ChangeAlphabet</span></a> <a class="idref" href="Undecidability.TM.Code.WriteValue.html#"><span class="id" title="library">WriteValue</span></a>.<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.TM.Compound.TMTac.html#"><span class="id" title="library">TMTac</span></a>.<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="Undecidability.TM.Basic.Mono.html#"><span class="id" title="library">Basic.Mono</span></a> <a class="idref" href="Undecidability.TM.Compound.Multi.html#"><span class="id" title="library">Compound.Multi</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab211"></a><h1 class="section">All tools for programming Turing machines</h1>
+
+<div class="paragraph"> </div>
+
+ All Coq modules in that the user programms Turing machine should <span class="inlinecode"><span class="id" title="keyword">Require</span></span> <span class="inlinecode"><span class="id" title="keyword">Import</span></span> <span class="inlinecode"><span class="id" title="var">TM.Code.ProgrammingTools</span></span>. The module should additionally require and import the modules containing the constructor and deconstructor machines, e.g. <span class="inlinecode"><span class="id" title="keyword">Require</span></span> <span class="inlinecode"><span class="id" title="keyword">Import</span></span> <span class="inlinecode"><span class="id" title="var">TM.Code.CaseNat</span></span>, etc. 
+<div class="paragraph"> </div>
+
+ This tactic automatically solves/instantiates premises of a hypothesis. If the hypothesis is a conjunction, it is destructed. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">modpon</span> <span class="id" title="var">H</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="var">simpl_surject</span>;<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> <span class="id" title="keyword">type</span> <span class="id" title="keyword">of</span> <span class="id" title="var">H</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <span class="id" title="keyword">forall</span> (<span class="id" title="var">i</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Vectors.Fin.html#t"><span class="id" title="inductive">Fin.t</span></a> <span class="id" title="var">_</span>), ?<span class="id" title="var">P</span> =&gt; <span class="id" title="tactic">idtac</span><br/>
+&nbsp;&nbsp;| <span class="id" title="keyword">forall</span> (<span class="id" title="var">x</span> : ?<span class="id" title="var">X</span>), ?<span class="id" title="var">P</span> =&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> <span class="id" title="keyword">type</span> <span class="id" title="keyword">of</span> <span class="id" title="var">X</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="keyword">Prop</span> =&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">tryif</span> <span class="id" title="var">spec_assert</span> <span class="id" title="var">H</span> <span class="id" title="tactic">by</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">simpl_surject</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">solve</span> [ <span class="id" title="tactic">eauto</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">contains_ext</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">isRight_mono</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">then</span> <span class="id" title="tactic">idtac</span> <span class="comment">(*&nbsp;"solved&nbsp;premise&nbsp;of&nbsp;type"&nbsp;X&nbsp;*)</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">modpon</span> <span class="id" title="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">else</span> (<span class="id" title="var">spec_assert</span> <span class="id" title="var">H</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <span class="id" title="tactic">idtac</span> <span class="comment">(*&nbsp;"could&nbsp;not&nbsp;solve&nbsp;premise"&nbsp;X&nbsp;*)</span> <span class="comment">(*&nbsp;new&nbsp;goal&nbsp;for&nbsp;the&nbsp;user&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">modpon</span> <span class="id" title="var">H</span> <span class="comment">(*&nbsp;continue&nbsp;after&nbsp;the&nbsp;user&nbsp;has&nbsp;proved&nbsp;the&nbsp;premise&nbsp;manually&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">_</span> =&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(*&nbsp;instantiate&nbsp;variable&nbsp;<span class="inlinecode"><span class="id" title="var">x</span></span>&nbsp;with&nbsp;evar&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">x'</span> := <span class="id" title="tactic">fresh</span> "x" <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">evar</span> (<span class="id" title="var">x'</span> : <span class="id" title="var">X</span>); <span class="id" title="tactic">specialize</span> (<span class="id" title="var">H</span> <span class="id" title="var">x'</span>); <span class="id" title="tactic">subst</span> <span class="id" title="var">x'</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">modpon</span> <span class="id" title="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span><br/>
+&nbsp;&nbsp;| ?<span class="id" title="var">X</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d82a7d96d3659d805ffe732283716822"><span class="id" title="notation">/\</span></a> ?<span class="id" title="var">Y</span> =&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">H'</span> := <span class="id" title="tactic">fresh</span> <span class="id" title="var">H</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <span class="id" title="var">H</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">H</span> <span class="id" title="var">H'</span>]; <span class="id" title="var">modpon</span> <span class="id" title="var">H</span>; <span class="id" title="var">modpon</span> <span class="id" title="var">H'</span><br/>
+&nbsp;&nbsp;| <span class="id" title="var">_</span> =&gt; <span class="id" title="tactic">idtac</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+To get rid of all those uggly tape rewriting hypothesises. Be warned that maybe the goal can't be solved after that. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">clear_tape_eqs</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">repeat</span> <span class="id" title="keyword">lazymatch</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" title="var">H</span>: ?<span class="id" title="var">t'</span><span class="id" title="notation">[@</span> ?<span class="id" title="var">x</span><span class="id" title="notation">]</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> ?<span class="id" title="var">t</span><span class="id" title="notation">[@</span> ?<span class="id" title="var">x</span><span class="id" title="notation">]</span> |- <span class="id" title="var">_</span> ] =&gt; <span class="id" title="tactic">clear</span> <span class="id" title="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Machine Notations 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Notation</span> <a name="c08910e202733241c0ff38b25be5a0c9"><span class="id" title="notation">&quot;</span></a>pM @ ts" := (<a class="idref" href="Undecidability.TM.Lifting.LiftTapes.html#LiftTapes"><span class="id" title="definition">LiftTapes</span></a> <span class="id" title="var">pM</span> <span class="id" title="var">ts</span>) (<span class="id" title="tactic">at</span> <span class="id" title="keyword">level</span> 41, <span class="id" title="var">only</span> <span class="id" title="var">parsing</span>).<br/>
+<span class="id" title="keyword">Notation</span> <a name="90a86fb0402059f5edae6f00a2e07eef"><span class="id" title="notation">&quot;</span></a>pM ⇑ R" := (<a class="idref" href="Undecidability.TM.Code.ChangeAlphabet.html#ChangeAlphabet"><span class="id" title="definition">ChangeAlphabet</span></a> <span class="id" title="var">pM</span> <span class="id" title="var">R</span>) (<span class="id" title="tactic">at</span> <span class="id" title="keyword">level</span> 40, <span class="id" title="var">only</span> <span class="id" title="var">parsing</span>).<br/>
+</div>
+</div>
+<div id="footer">
+  Generated by <a href="http://coq.inria.fr/">coqdoc</a> and improved with <a href="https://github.com/tebbi/coqdocjs">CoqdocJS</a>
+</div>
+</div>
+</body>
+
+</html>

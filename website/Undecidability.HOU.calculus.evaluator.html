@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<link href="coqdocjs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="coqdocjs.js"></script>
+</head>
+
+<body onload="document.getElementById('content').focus()">
+  <div id="header">
+    <span class="left">
+      <span class="modulename"> <script> document.write(document.title) </script> </span>
+    </span>
+
+    <span class="button" id="toggle-proofs"></span>
+
+    <span class="right">
+      <a href="../">Project Page</a>
+      <a href="./indexpage.html"> Index </a>
+      <a href="./toc.html"> Table of Contents </a>
+    </span>
+</div>
+    <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+    <div id="main">
+<div class="code">
+<span class="id" title="keyword">Set Implicit Arguments</span>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Classes.Morphisms.html#"><span class="id" title="library">Morphisms</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Setoids.Setoid.html#"><span class="id" title="library">Setoid</span></a>.<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability.HOU</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="Undecidability.HOU.std.std.html#"><span class="id" title="library">std.std</span></a> <a class="idref" href="Undecidability.HOU.calculus.prelim.html#"><span class="id" title="library">calculus.prelim</span></a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Undecidability.HOU.calculus.semantics.html#"><span class="id" title="library">calculus.semantics</span></a> <a class="idref" href="Undecidability.HOU.calculus.confluence.html#"><span class="id" title="library">calculus.confluence</span></a> <a class="idref" href="Undecidability.HOU.calculus.normalisation.html#"><span class="id" title="library">calculus.normalisation</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab467"></a><h1 class="section">Evaluator</h1>
+
+</div>
+<div class="code">
+<span class="id" title="keyword">Section</span> <a name="Evaluator"><span class="id" title="section">Evaluator</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Context</span> {<span class="id" title="var">X</span>: <a class="idref" href="Undecidability.HOU.calculus.terms.html#Const"><span class="id" title="record">Const</span></a>}.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab468"></a><h2 class="section">Step Indexed Interpreter</h2>
+
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="xi"><span class="id" title="definition">xi</span></a> := <a class="idref" href="Undecidability.HOU.std.ars.evaluator.html#E"><span class="id" title="definition">evaluator.E</span></a> (@<a class="idref" href="Undecidability.HOU.calculus.confluence.html#rho"><span class="id" title="definition">rho</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.X"><span class="id" title="variable">X</span></a>) <span class="id" title="var">_</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="xi_correct"><span class="id" title="lemma">xi_correct</span></a> <span class="id" title="var">s</span> <span class="id" title="var">t</span>:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.semantics.html#79a83c678cebe5e74f9abbfe7c82814b"><span class="id" title="notation">▷</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#t"><span class="id" title="variable">t</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#df1ced36fc33ce188051218bca314374"><span class="id" title="notation">&lt;-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#84eb6d2849dbf3581b1c0c05add5f2d8"><span class="id" title="notation">exists</span></a> <span class="id" title="var">n</span><a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#84eb6d2849dbf3581b1c0c05add5f2d8"><span class="id" title="notation">,</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#xi"><span class="id" title="definition">xi</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#Some"><span class="id" title="constructor">Some</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#t"><span class="id" title="variable">t</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">split</span>; <span class="id" title="tactic">intros</span> ?; <span class="id" title="tactic">eapply</span> <a class="idref" href="Undecidability.HOU.std.ars.evaluator.html#E_correct_tak"><span class="id" title="lemma">E_correct_tak</span></a>; <span class="id" title="tactic">try</span> <span class="id" title="tactic">eapply</span> <a class="idref" href="Undecidability.HOU.calculus.confluence.html#tak_fun_rho"><span class="id" title="lemma">tak_fun_rho</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">all</span>: <span class="id" title="tactic">eauto</span> <span class="id" title="keyword">using</span> <a class="idref" href="Undecidability.HOU.calculus.confluence.html#sandwich_step"><span class="id" title="instance">sandwich_step</span></a>, <a class="idref" href="Undecidability.HOU.calculus.confluence.html#sandwich_steps"><span class="id" title="instance">sandwich_steps</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">all</span>: <span class="id" title="var">typeclasses</span> <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="xi_monotone"><span class="id" title="lemma">xi_monotone</span></a> <span class="id" title="var">n</span>  <span class="id" title="var">m</span> <span class="id" title="var">s</span> <span class="id" title="var">t</span>:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Undecidability.HOU.calculus.evaluator.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Peano.html#9b077c369e19739ef880736ba34623ff"><span class="id" title="notation">&lt;=</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#xi"><span class="id" title="definition">xi</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#Some"><span class="id" title="constructor">Some</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#t"><span class="id" title="variable">t</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#xi"><span class="id" title="definition">xi</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#Some"><span class="id" title="constructor">Some</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#t"><span class="id" title="variable">t</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> ??; <span class="id" title="tactic">eapply</span> <a class="idref" href="Undecidability.HOU.std.ars.evaluator.html#E_monotone"><span class="id" title="lemma">E_monotone</span></a>; <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="compute_evaluation_step"><span class="id" title="lemma">compute_evaluation_step</span></a> (<span class="id" title="var">s</span>: <a class="idref" href="Undecidability.HOU.calculus.terms.html#exp"><span class="id" title="inductive">exp</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.X"><span class="id" title="variable">X</span></a>):<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">(</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#84eb6d2849dbf3581b1c0c05add5f2d8"><span class="id" title="notation">exists</span></a> <span class="id" title="var">t</span><a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#84eb6d2849dbf3581b1c0c05add5f2d8"><span class="id" title="notation">,</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.semantics.html#79a83c678cebe5e74f9abbfe7c82814b"><span class="id" title="notation">▷</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#t"><span class="id" title="variable">t</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Specif.html#5b63cb9ed0fed82566685c66e56592e4"><span class="id" title="notation">{</span></a> <span class="id" title="var">t</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Specif.html#5b63cb9ed0fed82566685c66e56592e4"><span class="id" title="notation">|</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.semantics.html#79a83c678cebe5e74f9abbfe7c82814b"><span class="id" title="notation">▷</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#t"><span class="id" title="variable">t</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Specif.html#5b63cb9ed0fed82566685c66e56592e4"><span class="id" title="notation">}</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span>; <span class="id" title="tactic">eapply</span> <a class="idref" href="Undecidability.HOU.std.ars.evaluator.html#compute_evaluation"><span class="id" title="lemma">compute_evaluation</span></a> <span class="id" title="keyword">with</span> (<span class="id" title="var">S</span> := <a class="idref" href="Undecidability.HOU.calculus.confluence.html#par"><span class="id" title="inductive">par</span></a>) (<span class="id" title="var">rho</span> := <a class="idref" href="Undecidability.HOU.calculus.confluence.html#rho"><span class="id" title="definition">rho</span></a>); <span class="id" title="tactic">eauto</span> <span class="id" title="keyword">using</span> <a class="idref" href="Undecidability.HOU.calculus.confluence.html#tak_fun_rho"><span class="id" title="lemma">tak_fun_rho</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">all</span>: <span class="id" title="var">typeclasses</span> <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab469"></a><h2 class="section">Evaluator</h2>
+
+<div class="paragraph"> </div>
+
+  we use eta, as xi is already used for the step indexed version 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="eta"><span class="id" title="definition">eta</span></a> (<span class="id" title="var">s</span>: <a class="idref" href="Undecidability.HOU.calculus.terms.html#exp"><span class="id" title="inductive">exp</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.X"><span class="id" title="variable">X</span></a>) {<span class="id" title="var">Gamma</span> <span class="id" title="var">A</span>} (<span class="id" title="var">H</span>: <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Gamma"><span class="id" title="variable">Gamma</span></a> <a class="idref" href="Undecidability.HOU.calculus.typing.html#475d58042806a5294f9ce6903e16f6d3"><span class="id" title="notation">⊢</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.typing.html#475d58042806a5294f9ce6903e16f6d3"><span class="id" title="notation">:</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#A"><span class="id" title="variable">A</span></a>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Specif.html#proj1_sig"><span class="id" title="definition">proj1_sig</span></a> (<a class="idref" href="Undecidability.HOU.calculus.evaluator.html#compute_evaluation_step"><span class="id" title="lemma">compute_evaluation_step</span></a> (<a class="idref" href="Undecidability.HOU.calculus.normalisation.html#termination_steps"><span class="id" title="lemma">termination_steps</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#H"><span class="id" title="variable">H</span></a>)).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="c754850da768fa132e940355b6482805"><span class="id" title="definition">eta₀</span></a> (<span class="id" title="var">s</span>: <a class="idref" href="Undecidability.HOU.calculus.terms.html#exp"><span class="id" title="inductive">exp</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.X"><span class="id" title="variable">X</span></a>) {<span class="id" title="var">Gamma</span> <span class="id" title="var">n</span> <span class="id" title="var">A</span>} (<span class="id" title="var">H</span>: <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Gamma"><span class="id" title="variable">Gamma</span></a> <a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">⊢(</span></a><a class="idref" href="Undecidability.HOU.calculus.evaluator.html#n"><span class="id" title="variable">n</span></a><a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">)</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">:</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#A"><span class="id" title="variable">A</span></a>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Specif.html#proj1_sig"><span class="id" title="definition">proj1_sig</span></a> (<a class="idref" href="Undecidability.HOU.calculus.evaluator.html#compute_evaluation_step"><span class="id" title="lemma">compute_evaluation_step</span></a> (<a class="idref" href="Undecidability.HOU.calculus.normalisation.html#ordertyping_termination_steps"><span class="id" title="lemma">ordertyping_termination_steps</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#H"><span class="id" title="variable">H</span></a>)).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="var">Arguments</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#eta"><span class="id" title="definition">eta</span></a> <span class="id" title="var">_</span> {<span class="id" title="var">_</span>} {<span class="id" title="var">_</span>} <span class="id" title="var">_</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">Arguments</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#c754850da768fa132e940355b6482805"><span class="id" title="definition">eta₀</span></a> <span class="id" title="var">_</span> {<span class="id" title="var">_</span>} {<span class="id" title="var">_</span>} {<span class="id" title="var">_</span>} <span class="id" title="var">_</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Section</span> <a name="Evaluator.Correctness"><span class="id" title="section">Correctness</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Variable</span> (<a name="Evaluator.Correctness.Gamma"><span class="id" title="variable">Gamma</span></a>: <a class="idref" href="Undecidability.HOU.calculus.order.html#ctx"><span class="id" title="definition">ctx</span></a>) (<a name="Evaluator.Correctness.n"><span class="id" title="variable">n</span></a>: <a class="idref" href="http://coq.inria.fr/distrib/V8.8.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) (<a name="Evaluator.Correctness.s"><span class="id" title="variable">s</span></a>: <a class="idref" href="Undecidability.HOU.calculus.terms.html#exp"><span class="id" title="inductive">exp</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.X"><span class="id" title="variable">X</span></a>) (<a name="Evaluator.Correctness.A"><span class="id" title="variable">A</span></a>: <a class="idref" href="Undecidability.HOU.calculus.terms.html#type"><span class="id" title="inductive">type</span></a>) (<a name="Evaluator.Correctness.H"><span class="id" title="variable">H</span></a>: <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Gamma"><span class="id" title="variable">Gamma</span></a> <a class="idref" href="Undecidability.HOU.calculus.typing.html#475d58042806a5294f9ce6903e16f6d3"><span class="id" title="notation">⊢</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.typing.html#475d58042806a5294f9ce6903e16f6d3"><span class="id" title="notation">:</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#A"><span class="id" title="variable">A</span></a>) (<a name="da4a4e6126300de6755ee654de4dda84"><span class="id" title="variable">H₀</span></a>: <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Gamma"><span class="id" title="variable">Gamma</span></a> <a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">⊢(</span></a><a class="idref" href="Undecidability.HOU.calculus.evaluator.html#n"><span class="id" title="variable">n</span></a><a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">)</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">:</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#A"><span class="id" title="variable">A</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="eta_correct"><span class="id" title="lemma">eta_correct</span></a>: <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.semantics.html#79a83c678cebe5e74f9abbfe7c82814b"><span class="id" title="notation">▷</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#eta"><span class="id" title="definition">eta</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.H"><span class="id" title="variable">H</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#eta"><span class="id" title="definition">eta</span></a>. <span class="id" title="tactic">destruct</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#compute_evaluation_step"><span class="id" title="lemma">compute_evaluation_step</span></a>; <span class="id" title="var">cbn</span>; <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="205e4efa81d223e1aba6fb7c66f2a2ea"><span class="id" title="lemma">eta₀_correct</span></a>: <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.semantics.html#79a83c678cebe5e74f9abbfe7c82814b"><span class="id" title="notation">▷</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#c754850da768fa132e940355b6482805"><span class="id" title="definition">eta₀</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#da4a4e6126300de6755ee654de4dda84"><span class="id" title="variable">H₀</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#c754850da768fa132e940355b6482805"><span class="id" title="definition">eta₀</span></a>. <span class="id" title="tactic">destruct</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#compute_evaluation_step"><span class="id" title="lemma">compute_evaluation_step</span></a>; <span class="id" title="var">cbn</span>; <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="eta_normal"><span class="id" title="lemma">eta_normal</span></a>: <a class="idref" href="Undecidability.HOU.calculus.semantics.html#normal"><span class="id" title="abbreviation">normal</span></a> (<a class="idref" href="Undecidability.HOU.calculus.evaluator.html#eta"><span class="id" title="definition">eta</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.H"><span class="id" title="variable">H</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#eta_correct"><span class="id" title="lemma">eta_correct</span></a>; <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="73d77da8092491b1d2fdfce85e79da61"><span class="id" title="lemma">eta₀_normal</span></a>: <a class="idref" href="Undecidability.HOU.calculus.semantics.html#normal"><span class="id" title="abbreviation">normal</span></a> (<a class="idref" href="Undecidability.HOU.calculus.evaluator.html#c754850da768fa132e940355b6482805"><span class="id" title="definition">eta₀</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#da4a4e6126300de6755ee654de4dda84"><span class="id" title="variable">H₀</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#205e4efa81d223e1aba6fb7c66f2a2ea"><span class="id" title="lemma">eta₀_correct</span></a>; <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="eta_typing"><span class="id" title="lemma">eta_typing</span></a>: <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.Gamma"><span class="id" title="variable">Gamma</span></a> <a class="idref" href="Undecidability.HOU.calculus.typing.html#475d58042806a5294f9ce6903e16f6d3"><span class="id" title="notation">⊢</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#eta"><span class="id" title="definition">eta</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.H"><span class="id" title="variable">H</span></a> <a class="idref" href="Undecidability.HOU.calculus.typing.html#475d58042806a5294f9ce6903e16f6d3"><span class="id" title="notation">:</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.A"><span class="id" title="variable">A</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">eapply</span> <a class="idref" href="Undecidability.HOU.calculus.typing.html#preservation_under_steps"><span class="id" title="lemma">preservation_under_steps</span></a>. <span class="id" title="tactic">rewrite</span> &lt;-<a class="idref" href="Undecidability.HOU.calculus.evaluator.html#eta_correct"><span class="id" title="lemma">eta_correct</span></a>. <span class="id" title="var">all</span>: <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Lemma</span> <a name="ba8fd7e7471fac2ee415821cc4657ed6"><span class="id" title="lemma">eta₀_typing</span></a>: <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.Gamma"><span class="id" title="variable">Gamma</span></a> <a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">⊢(</span></a><a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.n"><span class="id" title="variable">n</span></a><a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">)</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#c754850da768fa132e940355b6482805"><span class="id" title="definition">eta₀</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.s"><span class="id" title="variable">s</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#da4a4e6126300de6755ee654de4dda84"><span class="id" title="variable">H₀</span></a> <a class="idref" href="Undecidability.HOU.calculus.order.html#1c0ced31b521ad4d12cc3be5e4974176"><span class="id" title="notation">:</span></a> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness.A"><span class="id" title="variable">A</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">eapply</span> <a class="idref" href="Undecidability.HOU.calculus.order.html#ordertyping_preservation_under_steps"><span class="id" title="lemma">ordertyping_preservation_under_steps</span></a>. <span class="id" title="tactic">rewrite</span> &lt;-<a class="idref" href="Undecidability.HOU.calculus.evaluator.html#205e4efa81d223e1aba6fb7c66f2a2ea"><span class="id" title="lemma">eta₀_correct</span></a>. <span class="id" title="var">all</span>: <span class="id" title="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">End</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator.Correctness"><span class="id" title="section">Correctness</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#Evaluator"><span class="id" title="section">Evaluator</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#eta"><span class="id" title="definition">eta</span></a> {<span class="id" title="var">_</span>} <span class="id" title="var">_</span> {<span class="id" title="var">_</span>} {<span class="id" title="var">_</span>} <span class="id" title="var">_</span>.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="Undecidability.HOU.calculus.evaluator.html#c754850da768fa132e940355b6482805"><span class="id" title="definition">eta₀</span></a> {<span class="id" title="var">_</span>} <span class="id" title="var">_</span> {<span class="id" title="var">_</span>} {<span class="id" title="var">_</span>} {<span class="id" title="var">_</span>} <span class="id" title="var">_</span>.<br/>
+</div>
+</div>
+<div id="footer">
+  Generated by <a href="http://coq.inria.fr/">coqdoc</a> and improved with <a href="https://github.com/tebbi/coqdocjs">CoqdocJS</a>
+</div>
+</div>
+</body>
+
+</html>
