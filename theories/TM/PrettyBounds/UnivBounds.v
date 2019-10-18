@@ -262,7 +262,7 @@ Module Univ_nice.
     (** The alphabet of the simulated machine *)
     Variable (sigM : finType).
     (** The simulated machine *)
-    Variable (M : mTM sigM 1).
+    Implicit Type  (M : mTM sigM 1).
 
 
     Lemma DoAction'_steps_nice :
@@ -281,12 +281,12 @@ Module Univ_nice.
       domWith_approx. apply dominatedWith_solve. reflexivity.
     Qed.
 
-    Definition number_of_states : nat := length (enum (states M)).
+    Definition number_of_states M: nat := length (enum (states M)).
 
-    Lemma size_state_index_lt (q : states M) : size (index q) < size number_of_states.
-    Proof. hnf. rewrite !Encode_nat_hasSize. enough (index q < number_of_states) by omega. apply index_le. Qed.
+    Lemma size_state_index_lt M (q : states M) : size (index q) < size (number_of_states M).
+    Proof. hnf. rewrite !Encode_nat_hasSize. enough (index q < (number_of_states M)) by omega. apply index_le. Qed.
 
-    Lemma size_state_index_le (q : states M) : size (index q) <= size number_of_states.
+    Lemma size_state_index_le M (q : states M) : size (index q) <= size (number_of_states M).
     Proof. apply Nat.lt_le_incl. apply size_state_index_lt. Qed.
 
     Lemma Univ_Step_steps_ConstrPair_nice :
@@ -304,8 +304,8 @@ Module Univ_nice.
     Qed.
 
 
-    Lemma Encode_state_hasSize (q : states M) :
-      size (halt q, index q) <= size number_of_states.
+    Lemma Encode_state_hasSize (M : mTM sigM 1) (q : states M) :
+      size (halt q, index q) <= size (number_of_states M).
     Proof.
       setoid_rewrite Encode_pair_hasSize. cbn. setoid_rewrite Encode_bool_hasSize. cbn. hnf.
       pose proof size_state_index_lt q. hnf in H. nia.
@@ -325,8 +325,8 @@ Module Univ_nice.
       length (graph_of_fun f) = length (enum A).
     Proof. unfold graph_of_fun. now simpl_list. Qed.
 
-    Lemma length_graph_is_number_of_states :
-      length (graph_of_TM M) = number_of_states * (1 + length (elem sigM)).
+    Lemma length_graph_is_number_of_states (M : mTM sigM 1):
+      length (graph_of_TM M) = (number_of_states M) * (1 + length (elem sigM)).
     Proof.
       unfold graph_of_TM, number_of_states. simpl_list. setoid_rewrite graph_of_fun_length. cbn -[enum]. cbn. simpl_list.
       rewrite prodLists_length. simpl_list. ring_simplify. now rewrite Nat.mul_comm.
@@ -335,11 +335,11 @@ Module Univ_nice.
     Instance tam (x : nat) : Proper (lt --> Basics.flip Basics.impl) (le x).
     Proof. hnf. intros. cbn in *. hnf in *. intros. omega. Qed.
 
-    Lemma Encode_graph_ge_number_of_states :
-      number_of_states <= size (graph_of_TM M).
+    Lemma Encode_graph_ge_number_of_states (M : mTM sigM 1):
+      (number_of_states M)<= size (graph_of_TM M).
     Proof.
       (* We can show that the number of entries in [number_of_states] is equal to [number_of_states] *)
-      enough (number_of_states <= length (graph_of_TM M)).
+      enough (number_of_states M <= length (graph_of_TM M)).
       {
         setoid_rewrite Encode_list_hasSize.
         setoid_rewrite <- Encode_list_hasSize_ge_length.
@@ -350,35 +350,37 @@ Module Univ_nice.
       nia.
     Qed.
 
-    Lemma Encode_graph_hasSize_ge1 :
+    Lemma Encode_graph_hasSize_ge1 (M : mTM sigM 1):
       1 <= size (graph_of_TM M).
     Proof. setoid_rewrite Encode_list_hasSize. apply Encode_list_hasSize_ge1. Qed.
-
+(*
     Lemma number_of_states_nice :
-      { c | size number_of_states <=(c) size (graph_of_TM M) }.
+      { c | forall (M : mTM sigM 1), size (number_of_states M) <=(c) size (graph_of_TM M) }.
     Proof.
-      eexists.
+      eexists. intros M.
       eapply dominatedWith_trans.
       { apply dominatedWith_solve. rewrite Encode_nat_hasSize. reflexivity. }
       ring_simplify. apply dominatedWith_add_r.
       { apply dominatedWith_solve. apply Encode_graph_ge_number_of_states. }
       { apply Encode_graph_hasSize_ge1. }
-    Qed.
+    Qed. *)
 
     Lemma Univ_Step_steps_Lookup_nice :
-      { c | forall (q : states M) (tp : tape sigM), Univ_Step_steps_Lookup q tp <=(c) size (graph_of_TM M) }.
+      { c | forall (M : mTM sigM 1) (q : states M) (tp : tape sigM), Univ_Step_steps_Lookup q tp <=(c) S (number_of_states M) * size (graph_of_TM M) }.
     Proof.
-      eexists. unfold Univ_Step_steps_Lookup. intros. eapply dominatedWith_trans. unshelve eapply (proj2_sig (Lookup_steps_nice' _ _)).
+      eexists. unfold Univ_Step_steps_Lookup. intros. eapply dominatedWith_trans. simple notypeclasses refine (proj2_sig (Lookup_steps_nice' _ _) _ _).
       - intros (s,(f,i)). setoid_rewrite Encode_pair_hasSize. cbn. setoid_rewrite Encode_bool_hasSize. omega. constructor. (* this is odd *)
       - setoid_rewrite Encode_pair_hasSize; cbn [Encode_pair_size]. setoid_rewrite Encode_Finite_hasSize. ring_simplify. domWith_approx.
-        + eapply dominatedWith_trans.
-          * apply dominatedWith_solve. apply Encode_state_hasSize.
-          * apply (proj2_sig number_of_states_nice).
-        + apply dominatedWith_refl. constructor.
+        + apply dominatedWith_solve. setoid_rewrite Encode_state_hasSize.
+          rewrite !Encode_nat_hasSize.
+          apply Nat.eq_le_incl.
+          rewrite Nat.mul_succ_l. f_equal.
+        + apply dominatedWith_solve.  refine (_:@size (sigList (sigPair (sigPair (option sigM) sigState) (sigPair (option sigM * move) sigState)))
+    (list (option sigM * (bool * nat) * (option sigM * move * (bool * nat)))) (Encode_graph sigM) (graph_of_TM M) <= _ * size (graph_of_TM M) + size (graph_of_TM M)). nia. 
     Qed.
 
     Lemma Univ_Step_steps_Translate_nice :
-      { c | forall (q : states M), Univ_Step_steps_Translate q <=(c) size number_of_states }.
+      { c | forall (M : mTM sigM 1) (q : states M), Univ_Step_steps_Translate q <=(c) size number_of_states }.
     Proof.
       eexists. unfold Univ_Step_steps_Translate. intros.
       eapply dominatedWith_trans. apply (proj2_sig (Translate_steps_nice _)).
