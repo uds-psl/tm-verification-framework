@@ -335,7 +335,7 @@ Module Univ_nice.
     Instance tam (x : nat) : Proper (lt --> Basics.flip Basics.impl) (le x).
     Proof. hnf. intros. cbn in *. hnf in *. intros. omega. Qed.
 
-    Lemma Encode_graph_ge_number_of_states (M : mTM sigM 1):
+    (*)Lemma Encode_graph_ge_number_of_states (M : mTM sigM 1):
       (number_of_states M)<= size (graph_of_TM M).
     Proof.
       (* We can show that the number of entries in [number_of_states] is equal to [number_of_states] *)
@@ -348,7 +348,7 @@ Module Univ_nice.
       setoid_rewrite length_graph_is_number_of_states.
       try rewrite Encode_nat_hasSize. ring_simplify.
       nia.
-    Qed.
+    Qed.*)
 
     Lemma Encode_graph_hasSize_ge1 (M : mTM sigM 1):
       1 <= size (graph_of_TM M).
@@ -366,73 +366,80 @@ Module Univ_nice.
     Qed. *)
 
     Lemma Univ_Step_steps_Lookup_nice :
-      { c | forall (M : mTM sigM 1) (q : states M) (tp : tape sigM), Univ_Step_steps_Lookup q tp <=(c) S (number_of_states M) * size (graph_of_TM M) }.
+      { c | forall (M : mTM sigM 1) (q : states M) (tp : tape sigM), Univ_Step_steps_Lookup q tp <=(c) size (number_of_states M) * size (graph_of_TM M) }.
     Proof.
       eexists. unfold Univ_Step_steps_Lookup. intros. eapply dominatedWith_trans. simple notypeclasses refine (proj2_sig (Lookup_steps_nice' _ _) _ _).
       - intros (s,(f,i)). setoid_rewrite Encode_pair_hasSize. cbn. setoid_rewrite Encode_bool_hasSize. omega. constructor. (* this is odd *)
       - setoid_rewrite Encode_pair_hasSize; cbn [Encode_pair_size]. setoid_rewrite Encode_Finite_hasSize. ring_simplify. domWith_approx.
         + apply dominatedWith_solve. setoid_rewrite Encode_state_hasSize.
-          rewrite !Encode_nat_hasSize.
-          apply Nat.eq_le_incl.
-          rewrite Nat.mul_succ_l. f_equal.
-        + apply dominatedWith_solve.  refine (_:@size (sigList (sigPair (sigPair (option sigM) sigState) (sigPair (option sigM * move) sigState)))
-    (list (option sigM * (bool * nat) * (option sigM * move * (bool * nat)))) (Encode_graph sigM) (graph_of_TM M) <= _ * size (graph_of_TM M) + size (graph_of_TM M)). nia. 
+          apply Nat.eq_le_incl. reflexivity. 
+        + apply dominatedWith_solve. rewrite <- Encode_nat_hasSize_ge1. rewrite Nat.mul_1_l. reflexivity. 
     Qed.
 
     Lemma Univ_Step_steps_Translate_nice :
-      { c | forall (M : mTM sigM 1) (q : states M), Univ_Step_steps_Translate q <=(c) size number_of_states }.
+      { c | forall (M : mTM sigM 1) (q : states M), Univ_Step_steps_Translate q <=(c) size (number_of_states M) }.
     Proof.
       eexists. unfold Univ_Step_steps_Translate. intros.
       eapply dominatedWith_trans. apply (proj2_sig (Translate_steps_nice _)).
       rewrite Encode_pair_hasSize. cbn. rewrite Encode_bool_hasSize. ring_simplify. domWith_approx.
       - apply dominatedWith_solve. apply size_state_index_le.
-      - instantiate (1 := 2). hnf. enough (1 <= size number_of_states) by omega. apply Encode_nat_hasSize_ge1.
+      - instantiate (1 := 2). hnf. enough (1 <= size (number_of_states M)) by omega. apply Encode_nat_hasSize_ge1.
     Qed.
 
     Lemma Univ_Step_steps_IsFinal_nice :
-      { c | forall (q : states M) (tp : tape sigM),
+      { c | forall M (q : states M) (tp : tape sigM),
           Univ_Step_steps_IsFinal q tp
           <=(c)
              if halt q
              then 1
-             else size (graph_of_TM M) }.
+             else size (number_of_states M) * size (graph_of_TM M) }.
     Proof.
-      eexists. intros. unfold Univ_Step_steps_IsFinal. domWith_match. domWith_approx. destruct trans as (q',acts) eqn:E. ring_simplify. apply dominatedWith_add_r. domWith_approx.
-      - eapply dominatedWith_trans. apply (proj2_sig ReadCurrent'_steps_nice). apply dominatedWith_solve. apply Encode_graph_hasSize_ge1.
-      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_ConstrPair_nice). apply dominatedWith_solve. apply Encode_graph_hasSize_ge1.
-      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_ResetSymbol_nice). apply dominatedWith_solve. apply Encode_graph_hasSize_ge1.
-      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_Lookup_nice). apply dominatedWith_solve. omega.
-      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_CasePair_nice). apply dominatedWith_solve. apply Encode_graph_hasSize_ge1.
-      - eapply dominatedWith_trans. apply (proj2_sig DoAction'_steps_nice). apply dominatedWith_solve. apply Encode_graph_hasSize_ge1.
-      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_Translate_nice). apply (proj2_sig number_of_states_nice).
-      - apply Encode_graph_hasSize_ge1.
+      eexists. intros. unfold Univ_Step_steps_IsFinal. domWith_match. domWith_approx. destruct trans as (q',acts) eqn:E. ring_simplify.
+      specialize (Encode_nat_hasSize_ge1 (number_of_states M)) as ?.
+      specialize ((Encode_graph_hasSize_ge1 M)) as ?. apply dominatedWith_add_r. domWith_approx.
+      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_ConstrPair_nice). apply dominatedWith_solve. nia.
+      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_ResetSymbol_nice). apply dominatedWith_solve. nia.
+      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_Lookup_nice). apply dominatedWith_solve. nia.
+      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_CasePair_nice). apply dominatedWith_solve. nia.
+      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_Translate_nice).
+         eapply dominatedWith_solve. nia.
+      - specialize (Encode_graph_hasSize_ge1 M) as ?. nia.
     Qed.
 
     Lemma Univ_Step_steps_nice :
-      { c | forall (q : states M) (tp : tape sigM),
+      { c | forall M (q : states M) (tp : tape sigM),
           Univ_Step_steps q tp
           <=(c)
              if halt q
              then 1
-             else size (graph_of_TM M) }.
+             else size (number_of_states M) * size (graph_of_TM M) }.
     Proof.
-      eexists. intros. unfold Univ_Step_steps. ring_simplify. apply dominatedWith_add_r; [ domWith_approx | ].
-      - eapply dominatedWith_trans. apply (proj2_sig IsFinal_steps_nice). apply dominatedWith_solve. destruct halt; [omega | apply Encode_graph_hasSize_ge1].
-      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_IsFinal_nice). apply dominatedWith_solve. destruct halt; omega.
-      - destruct halt; [omega | apply Encode_graph_hasSize_ge1].
+      eexists. intros. unfold Univ_Step_steps. ring_simplify.
+      specialize (Encode_nat_hasSize_ge1 (number_of_states M)) as ?.
+      specialize ((Encode_graph_hasSize_ge1 M)) as ?.
+      apply dominatedWith_add_r; [ domWith_approx | ].
+      - eapply dominatedWith_trans. apply (proj2_sig IsFinal_steps_nice). apply dominatedWith_solve. destruct halt; [omega | nia].
+      - eapply dominatedWith_trans. apply (proj2_sig Univ_Step_steps_IsFinal_nice). apply dominatedWith_solve. reflexivity.
+      - destruct halt; [omega | specialize (Encode_graph_hasSize_ge1 M)]. nia.
     Qed.
 
     Local Arguments Univ_Step_steps : simpl never.
 
     Lemma Univ_steps_nice :
-      { c | forall (q : states M) (tp : tape sigM) (k : nat), Univ_steps q tp k <=(c) size k * size (graph_of_TM M) }.
+      { c | forall M (q : states M) (tp : tape sigM) (k : nat), Univ_steps q tp k <=(c) size k * size (graph_of_TM M) * size (number_of_states M) }.
     Proof.
       pose_nice Univ_Step_steps_nice Hc_Step c_Step.
-      exists (c_Step + 1). intros. induction k as [ | k' IH] in q,tp|-*; cbn [Univ_steps] in *.
-      - hnf. rewrite Hc_Step. destruct halt.
-        + rewrite Encode_nat_hasSize. ring_simplify. enough (1 <= size (graph_of_TM M)) by nia. apply Encode_graph_hasSize_ge1.
-        + rewrite Encode_nat_hasSize. ring_simplify. enough (1 <= size (graph_of_TM M)) by nia. apply Encode_graph_hasSize_ge1.
-      - specialize (Hc_Step q tp). hnf. destruct halt eqn:E.
+      exists (c_Step + 1). intros.
+      
+      specialize (Encode_nat_hasSize_ge1 (number_of_states M)) as ?.
+      specialize ((Encode_graph_hasSize_ge1 M)) as ?.
+      induction k as [ | k' IH] in q,tp|-*; cbn [Univ_steps] in *.
+      -specialize (Encode_nat_hasSize_ge1 0) as ?.
+        hnf. rewrite Hc_Step. destruct halt.
+        + rewrite Encode_nat_hasSize. ring_simplify. nia.
+        + rewrite Encode_nat_hasSize. ring_simplify. nia. 
+      -specialize (Encode_nat_hasSize_ge1 (S k')) as ?.
+       specialize (Hc_Step M q tp). hnf. destruct halt eqn:E.
         + rewrite Hc_Step. ring_simplify. enough (1 <= size (1 + k') /\ 1 <= size (graph_of_TM M)) by nia. split. apply Encode_nat_hasSize_ge1. apply Encode_graph_hasSize_ge1.
         + destruct (step (mk_mconfig q [|tp|])) as (q',tp') eqn:E'. specialize (IH q' tp'[@Fin0]); hnf in IH. rewrite IH. rewrite Hc_Step. clear_all.
           ring_simplify. rewrite !Encode_nat_hasSize. ring_simplify. enough (1 <= size (graph_of_TM M)) by nia. apply Encode_graph_hasSize_ge1.
