@@ -43,19 +43,96 @@ This file is meant as an entry point for the hyperlinks in the paper. For <span 
 <span class="id" title="keyword">Section</span> <a name="PrimitiveMachines"><span class="id" title="section">PrimitiveMachines</span></a>.<br/>
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Basic.Mono.html#ReadChar_Sem"><span class="id" title="definition">Mono.ReadChar_Sem</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Basic.Mono.html#ReadChar_Sem"><span class="id" title="definition">ReadChar_Sem</span></a>.<br/>
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Basic.Mono.html#Write_Sem"><span class="id" title="lemma">Mono.Write_Sem</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Basic.Mono.html#Write_Sem"><span class="id" title="lemma">Write_Sem</span></a>.<br/>
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Basic.Mono.html#Move_Sem"><span class="id" title="lemma">Mono.Move_Sem</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Basic.Mono.html#Move_Sem"><span class="id" title="lemma">Move_Sem</span></a>.<br/>
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Compound.Multi.html#Nop_Sem"><span class="id" title="lemma">Multi.Nop_Sem</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Compound.Multi.html#Nop_Sem"><span class="id" title="lemma">Nop_Sem</span></a>.<br/>
 
 <br/>
 <span class="id" title="keyword">End</span> <a class="idref" href="Undecidability.TM.Hyperlinked.html#PrimitiveMachines"><span class="id" title="section">PrimitiveMachines</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability.TM</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="Undecidability.TM.Combinators.Combinators.html#"><span class="id" title="library">Combinators</span></a>.<br/>
+<span class="id" title="keyword">Section</span> <a name="MachineCombinators"><span class="id" title="section">MachineCombinators</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Combinators.Switch.html#Switch_Realise"><span class="id" title="lemma">Switch_Realise</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Combinators.Switch.html#Switch_TerminatesIn"><span class="id" title="lemma">Switch_TerminatesIn</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Combinators.While.html#While_Realise"><span class="id" title="lemma">While_Realise</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Combinators.While.html#While_TerminatesIn"><span class="id" title="lemma">While_TerminatesIn</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Combinators.Combinators.html#Return_Realise"><span class="id" title="lemma">Return_Realise</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Combinators.Combinators.html#Return_Terminates"><span class="id" title="lemma">Return_Terminates</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Print</span> <a class="idref" href="Undecidability.TM.Combinators.SequentialComposition.html#Seq"><span class="id" title="definition">Seq</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Print</span> <a class="idref" href="Undecidability.TM.Combinators.If.html#If"><span class="id" title="definition">If</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="Undecidability.TM.Hyperlinked.html#MachineCombinators"><span class="id" title="section">MachineCombinators</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">From</span> <span class="id" title="var">Undecidability.TM.Lifting</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="Undecidability.TM.Lifting.LiftTapes.html#"><span class="id" title="library">LiftTapes</span></a> <a class="idref" href="Undecidability.TM.Lifting.LiftAlphabet.html#"><span class="id" title="library">LiftAlphabet</span></a>.<br/>
+<span class="id" title="keyword">Section</span> <a name="MachineLiftings"><span class="id" title="section">MachineLiftings</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Lifting.LiftTapes.html#LiftTapes_Realise"><span class="id" title="lemma">LiftTapes_Realise</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Lifting.LiftTapes.html#LiftTapes_Terminates"><span class="id" title="lemma">LiftTapes_Terminates</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Lifting.LiftAlphabet.html#LiftAlphabet_Realise"><span class="id" title="lemma">LiftAlphabet_Realise</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Lifting.LiftAlphabet.html#LiftAlphabet_TerminatesIn"><span class="id" title="lemma">LiftAlphabet_TerminatesIn</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="Undecidability.TM.Hyperlinked.html#MachineLiftings"><span class="id" title="section">MachineLiftings</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Section</span> <a name="EncodableTypes"><span class="id" title="section">EncodableTypes</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Code.Code.html#Encode_unit"><span class="id" title="instance">Encode_unit</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Code.Code.html#Encode_bool"><span class="id" title="instance">Encode_bool</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Code.Code.html#Encode_nat"><span class="id" title="instance">Encode_nat</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Code.Code.html#Encode_option"><span class="id" title="instance">Encode_option</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Code.Code.html#Encode_list"><span class="id" title="instance">Encode_list</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Code.Code.html#Encode_sum"><span class="id" title="instance">Encode_sum</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Code.Code.html#Encode_pair"><span class="id" title="instance">Encode_pair</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="Undecidability.TM.Hyperlinked.html#EncodableTypes"><span class="id" title="section">EncodableTypes</span></a>.<br/>
 
 <br/>
 <span class="id" title="var">From</span> <span class="id" title="var">Undecidability.TM</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="Undecidability.TM.Univ.StepTM.html#"><span class="id" title="library">Univ.StepTM</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.UnivBounds.html#"><span class="id" title="library">PrettyBounds.UnivBounds</span></a> <a class="idref" href="Undecidability.TM.PrettyBounds.UnivSpaceBounds.html#"><span class="id" title="library">PrettyBounds.UnivSpaceBounds</span></a>.<br/>
@@ -326,9 +403,6 @@ This lemma ransforms the lemma we proofed in Coq to the more readable version in
 
 <br/>
 <span class="id" title="keyword">End</span> <a class="idref" href="Undecidability.TM.Hyperlinked.html#UniversalMachine"><span class="id" title="section">UniversalMachine</span></a>.<br/>
-
-<br/>
-<span class="id" title="keyword">Check</span> <a class="idref" href="Undecidability.TM.Hyperlinked.html#Univ_Terminates_pretty"><span class="id" title="lemma">Univ_Terminates_pretty</span></a>.<br/>
 </div>
 </div>
 <div id="footer">
