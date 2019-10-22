@@ -10,9 +10,10 @@ Note that the HTML-documentation is already compiled.
 
 Assuming Coq 8.8.2 is installed with `opam`, necessary dependencies need to be installed by 
 
-``` sh
+```
+opam repo add coq-released https://coq.inria.fr/opam/released
 opam install coq-equations.1.2+8.8 coq-metacoq.1.0~alpha+8.8
 
 ```
 
-Then, the project can be build by calling `make -j 5 deps;make -j5 all`.
+Then, the project can be build by calling `make -j5 deps;make -j5 all`.
